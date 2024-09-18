@@ -1,2 +1,2 @@
 # progetto_techweb
-repository del progetto del corso di technologie web unibo 
+repository del progetto del corso di tecnologie web unibo 
