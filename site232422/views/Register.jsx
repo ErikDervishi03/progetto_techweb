@@ -7,6 +7,14 @@ function Register() {
         password: ''
     });
 
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value
+        });
+    };    
+
     const handleSubmit = (e) => {
         e.preventDefault();
         // Gestisci l'invio del form qui, ad esempio invia i dati al server
@@ -61,6 +69,8 @@ function Register() {
 
                 <button type="submit" className="btn btn-primary center">Registrati</button>
             </form>
+
+            <p>Hai gia' un account? <Link to="/login">Fai l'accesso</Link></p>
         </div>
     )
 }

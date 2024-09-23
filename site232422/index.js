@@ -4,6 +4,8 @@ const path = require('path');
 const mongoose = require('mongoose')
 const session = require("express-session");
 
+app.use(express.json());
+
 //connessione al database
 const mongoDBUri = "mongodb+srv://erikdervishi100:9kLXNrcPVfwKlfzd@site232422.5x4wa.mongodb.net/?retryWrites=true&w=majority&appName=site232422"
 mongoose.connect(mongoDBUri, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -20,7 +22,7 @@ const User = mongoose.model("User", userSchema)
 app.use(session({
     secret: 'site232422key',
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: { secure: false },
 }))
 
@@ -34,8 +36,59 @@ app.get('/', (req, res) => {
     res.render(path.join(__dirname, "public","index.html"))
 })
 
-app.all('*', (req, res) => {
-    res.send('<h1>Risorsa non trovata</h1>')
+//API sessione utente
+app.post('/api/newreg', (req, res) => {
+    const user = User.find({username: req.body.username})
+    if(!user) {
+        res.status(401).json({ success: false, message: "Registrazione non avvenuta. Prova a cambiare l'username." })
+    }
+    else {
+        var newUser = new User({
+            realname: req.body.realname,
+            username: req.body.username,
+            password: req.body.password
+        })
+        newUser.save()
+        res.status(200).json({ success: true, message: "Registrazione avvenuta con successo." })
+    }
+})
+
+app.post('/api/login', async (req, res) => {
+    const { username, password } = req.body;
+
+    const user = await User.find({username: username})
+    if(!user) {
+        res.status(401).json({ success: false, message: "Utente non trovato." })
+    }
+    else {
+        // se sbaglio username ne trova comunque uno ma si caca addosso e crasha
+        if(password == user[0].password) {
+            req.session.user = {username}
+            res.status(200).json({ success: true, message: "Login effettuato con successo." })
+        }
+        else {
+            res.status(401).json({ success: false, message: "Password non corretta." })
+        }
+    }
+
+})
+
+app.post('/api/logout', (req, res) => {
+    req.session.destroy(err => {
+        if (err) {
+            return res.status(500).json({ success: false, message: "Errore durante il logout." })
+        }
+        res.status(200).json({ success: true, message: "Logout avvenuto con successo." })
+    })
+})
+  
+app.get('/api/auth-check', (req, res) => {
+    if (req.session.user) {
+        res.status(200).json({ authenticated: true, user: req.session.user })
+    }
+    else {
+        res.status(401).json({ authenticated: false })
+    }
 })
 
 //ascolta sulla porta default 3000
