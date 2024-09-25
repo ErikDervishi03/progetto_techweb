@@ -37,9 +37,9 @@ app.get('/', (req, res) => {
 })
 
 //API sessione utente
-app.post('/api/newreg', (req, res) => {
-    const user = User.find({username: req.body.username})
-    if(!user) {
+app.post('/api/newreg', async (req, res) => {
+    const user = await User.find({username: req.body.username})
+    if(user[0]) {
         res.status(401).json({ success: false, message: "Registrazione non avvenuta. Prova a cambiare l'username." })
     }
     else {
@@ -49,6 +49,7 @@ app.post('/api/newreg', (req, res) => {
             password: req.body.password
         })
         newUser.save()
+        req.session.user = req.body.username
         res.status(200).json({ success: true, message: "Registrazione avvenuta con successo." })
     }
 })
@@ -57,11 +58,10 @@ app.post('/api/login', async (req, res) => {
     const { username, password } = req.body;
 
     const user = await User.find({username: username})
-    if(!user) {
+    if(!user[0]) {
         res.status(401).json({ success: false, message: "Utente non trovato." })
     }
     else {
-        // se sbaglio username ne trova comunque uno ma si caca addosso e crasha
         if(password == user[0].password) {
             req.session.user = {username}
             res.status(200).json({ success: true, message: "Login effettuato con successo." })
@@ -89,7 +89,7 @@ app.get('/api/auth-check', (req, res) => {
     else {
         res.status(401).json({ authenticated: false })
     }
-})
+}) 
 
 //ascolta sulla porta default 3000
 app.listen(3000)

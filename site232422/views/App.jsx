@@ -3,36 +3,41 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import Home from "./Home.jsx"
 import Login from "./Login.jsx"
 import Register from "./Register.jsx"
+import Calendar from "./Calendar.jsx"
+import Notes from "./Notes.jsx"
+import Pomodoro from "./Pomodoro.jsx"
 
 function App() {
     const [authenticated, setAuthenticated] = useState(false);
 
-    useEffect(() => {
-        fetch("/api/auth-check")
-            .then(res => res.json())
-            .then(data => {
-                if(data.authenticated) {
-                    setAuthenticated(true)
-                }
-                else {
-                    setAuthenticated(false)
-                }
-            })
+    useEffect( () => {
+        async function fetchData() {
+            await fetch("/api/auth-check")
+                .then(res => res.json())
+                .then(data => {
+                    if(data.authenticated) {
+                        setAuthenticated(true)
+                    }
+                    else {
+                        setAuthenticated(false)
+                    }
+                })
+        }
+        fetchData()
     }, [])
 
     return (
         <Router>
             <Routes>
                 <Route path="/login" element={authenticated ? <Navigate to="/" /> : <Login setAuthenticated={setAuthenticated}/> } />
-                <Route path="/register" element={authenticated ? <Navigate to="/" /> : <Register /> } />
+                <Route path="/register" element={authenticated ? <Navigate to="/" /> : <Register setAuthenticated={setAuthenticated}/> } />
+                <Route path="/calendar" element={authenticated ? <Calendar /> : <Navigate to="/login" />} />
+                <Route path="/notes" element={authenticated ? <Notes /> : <Navigate to="/login" />} />
+                <Route path="/pomodoro" element={authenticated ? <Pomodoro /> : <Navigate to="/login" />} />
                 <Route path="/" element={authenticated ? <Home /> : <Navigate to="/login" />} />
             </Routes>
         </Router>
     )
-
-    // return(
-    //     <Login setAuthenticated={setAuthenticated}></Login>
-    // )
 }
 
 export default App;

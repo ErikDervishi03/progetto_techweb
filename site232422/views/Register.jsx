@@ -1,24 +1,32 @@
 import React, { useState } from 'react';
+import {Link} from 'react-router-dom';
 
-function Register() {
-    const [formData, setFormData] = useState({
-        realname: '',
-        username: '',
-        password: ''
-    });
+//function Register() {
+const Register = ({setAuthenticated}) => {
+    const [realname, setRealname] = useState('')
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
+    const [error, setError] = useState('')
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value
-        });
-    };    
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Gestisci l'invio del form qui, ad esempio invia i dati al server
-        console.log('Dati del form:', formData);
+
+        const res = await fetch('/api/newreg', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({realname, username, password})
+        })
+
+        const data = await res.json()
+
+        if(data.success) {
+            setAuthenticated(true)
+        }
+        else {
+            setError(data.message)
+        }
     };
 
     return (
@@ -32,8 +40,8 @@ function Register() {
                         className="form-control"
                         id="realname"
                         name="realname"
-                        value={formData.realname}
-                        onChange={handleChange}
+                        value={realname}
+                        onChange={(e) => setRealname(e.target.value)}
                         placeholder="Inserisci il tuo nome e cognome"
                         required
                     />
@@ -46,8 +54,8 @@ function Register() {
                         className="form-control"
                         id="username"
                         name="username"
-                        value={formData.username}
-                        onChange={handleChange}
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
                         placeholder="Inserisci il tuo username"
                         required
                     />
@@ -60,8 +68,8 @@ function Register() {
                         className="form-control"
                         id="password"
                         name="password"
-                        value={formData.password}
-                        onChange={handleChange}
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                         placeholder="Inserisci la tua password"
                         required
                     />
@@ -69,6 +77,7 @@ function Register() {
 
                 <button type="submit" className="btn btn-primary center">Registrati</button>
             </form>
+            {error && <p>{error}</p>}
 
             <p>Hai gia' un account? <Link to="/login">Fai l'accesso</Link></p>
         </div>

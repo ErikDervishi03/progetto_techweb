@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import {Link} from 'react-router-dom';
 
 //??????? perche non va se scrivo function
 const Login = ({ setAuthenticated }) =>  {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
     const [error, setError] = useState('')
 
     const handleSubmit = async (e) => {
@@ -62,7 +63,7 @@ const Login = ({ setAuthenticated }) =>  {
             </form>
             {error && <p>{error}</p>}
 
-            {/* <p>Non hai un account? <Link to="/register">Registrati</Link></p> */}
+            <p>Non hai un account? <Link to="/register">Registrati</Link></p>
         </div>
     )
 }
