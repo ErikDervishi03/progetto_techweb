@@ -1,7 +1,24 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, {useState, useEffect} from 'react';
+import { Link, redirect } from 'react-router-dom';
 
 const Navbar = () => {
+    const [username, setUsername] = useState('')
+
+    const getUsername = async() => {
+        const res = await fetch('/api/auth-check')
+        const data = await res.json()
+        setUsername(data.user.username)
+    }
+
+    useEffect(() => {
+        getUsername()
+    }, [])
+
+    const handleLogout = async() => {
+        await fetch('/api/logout')
+        location.replace("/")
+    };
+
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
             <div className="container-fluid">
@@ -24,6 +41,26 @@ const Navbar = () => {
                             <Link className="nav-link" to="/pomodoro">Pomodoro</Link>
                         </li>
                     </ul>
+
+                    <div className="dropdown ms-auto">
+                        <button
+                            className="btn btn-secondary dropdown-toggle"
+                            type="button"
+                            id="dropdownMenuButton"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                        >
+                            {username}
+                        </button>
+                        <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                            <li className="dropdown-item text-muted">{username}</li>
+                            <li>
+                                <button className="dropdown-item" onClick={handleLogout}>
+                                    Log Out
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </nav>

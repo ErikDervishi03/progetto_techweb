@@ -73,7 +73,7 @@ app.post('/api/login', async (req, res) => {
 
 })
 
-app.post('/api/logout', (req, res) => {
+app.get('/api/logout', (req, res) => {
     req.session.destroy(err => {
         if (err) {
             return res.status(500).json({ success: false, message: "Errore durante il logout." })
@@ -89,7 +89,7 @@ app.get('/api/auth-check', (req, res) => {
     else {
         res.status(401).json({ authenticated: false })
     }
-}) 
+})
 
 //ascolta sulla porta default 3000
 app.listen(3000)
