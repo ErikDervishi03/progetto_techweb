@@ -18,10 +18,14 @@ module.exports = {
           },
         },
       },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
   },
   resolve: {
-    extensions: ['.js', '.jsx'], // Risolve le estensioni nei file importati
+    extensions: ['.js', '.jsx'],
   },
   devtool: 'source-map',
   mode: 'development',
