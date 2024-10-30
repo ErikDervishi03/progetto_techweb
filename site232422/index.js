@@ -16,7 +16,20 @@ const userSchema = new mongoose.Schema({
     password: String
 })
 
+const eventSchema = new mongoose.Schema({
+    username: String,
+    date: { type: Date, default: Date.now },
+    title: String,
+    duration: Number,
+    isRepeatable: Boolean,
+    frequency: String, 
+    until: Date,
+    fAlert: String,
+    sAlert: String
+})
+
 const User = mongoose.model("User", userSchema)
+const Event = mongoose.model("Event", eventSchema)
 
 //gestione sessione
 app.use(session({
@@ -88,6 +101,77 @@ app.get('/api/auth-check', (req, res) => {
     }
     else {
         res.status(401).json({ authenticated: false })
+    }
+})
+
+//API eventi
+app.post('/api/add-event', (req, res) => {
+    if(req.body.isRepeatable === false) {
+        req.body.frequency = ""
+        req.body.until = null
+    }
+
+    if(req.body.fAlert === "no") {
+        req.body.sAlert = "no"
+    }
+
+    const completeDate = new Date(req.body.date)
+    const [hours, minutes] = req.body.time.split(":").map(Number)
+    completeDate.setHours(hours, minutes, 0, 0)
+
+    var newEvent = new Event({
+        username: req.session.user.username,
+        date: completeDate,
+        title: req.body.title,
+        duration: req.body.duration,
+        isRepeatable: req.body.isRepeatable,
+        frequency: req.body.frequency, 
+        until: req.body.until,
+        fAlert: req.body.fAlert,
+        sAlert: req.body.sAlert
+    })
+
+    console.log(newEvent)
+    
+    newEvent.save()
+        .then(() => {
+            res.status(200).json({ success: true, message: "Evento aggiunto con successo." })
+        })
+        .catch((error) => {
+            res.status(400).json({success: false, message: {error}})
+        })
+})
+
+app.get('/api/remove-event', (req, res) => {
+
+})
+
+app.get('/api/get-all-events', async (req, res) => {
+    const dateS = req.query.date
+
+    if (!dateS) {
+        return res.status(400).json({ success: false, message: "Parametro 'date' mancante." })
+    }
+
+    const date = new Date(dateS);
+    const startDate = new Date(date.setHours(0, 0, 0, 0));
+    const endDate = new Date(date.setHours(23, 59, 59, 999));
+
+    const events = await Event.find({
+        date: {
+            $gte: startDate,
+            $lt: endDate
+        },
+        username: req.session.user.username
+    }).sort({date: 1})
+
+    console.log(events)
+
+    if(events.length === 0) {
+        res.status(400).json({ success: false, message: "Nessun evento trovato per questa data/username." })
+    }
+    else {
+        res.status(200).json({ success: true, events })
     }
 })
 
