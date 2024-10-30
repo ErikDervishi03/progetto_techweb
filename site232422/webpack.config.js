@@ -1,32 +1,35 @@
 const path = require('path');
 
 module.exports = {
-  entry: './views/main.jsx', // Punto d'ingresso del bundle
+  entry: './src/index.js',  // Il tuo punto di ingresso
   output: {
-    path: path.resolve(__dirname, 'public'),
-    filename: 'bundle.js', // Bundle che verrà servito
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
   },
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/, // Estensioni JS e JSX
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react'],
-          },
-        },
+            presets: ['@babel/preset-env', '@babel/preset-react']
+          }
+        }
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
-      },
+        use: ['style-loader', 'css-loader']
+      }
     ],
   },
-  resolve: {
-    extensions: ['.js', '.jsx'],
+  devServer: {
+    static: {
+      directory: path.join(__dirname, 'dist'),
+    },
+    port: 3000,  // La porta su cui vuoi lanciare l'app
+    hot: true,   // Abilita l'hot reloading
+    historyApiFallback: true,
   },
-  devtool: 'source-map',
-  mode: 'development',
 };

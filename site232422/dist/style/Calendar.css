@@ -1,0 +1,5 @@
+@media (max-width: 576px) {
+    .calendar-table {
+        font-size: 0.8rem; /* Riduci il font */
+    }
+}

@@ -63,7 +63,7 @@ const Login = ({ setAuthenticated }) =>  {
             </form>
             {error && <p>{error}</p>}
 
-            <p>Non hai un account? <Link to="/register">Registrati</Link></p>
+            <p>Non hai un ciao? <Link to="/register">Registrati</Link></p>
         </div>
     )
 }
