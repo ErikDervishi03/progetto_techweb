@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import { Link, redirect } from 'react-router-dom';
+import React, {useState, useEffect} from 'react'
+import { Link, redirect } from 'react-router-dom'
 
 const Navbar = () => {
     const [username, setUsername] = useState('')

@@ -1,9 +1,15 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
+const monthNames = ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno',
+    'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre']
 
 export function getMonthYearName(date) {
-    const monthNames = ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno',
-                        'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre']
     return `${monthNames[date.getMonth()]} ${date.getFullYear()}`
+}
+
+export function getStringDate(date) {
+    return `${date.getDate()} ${monthNames[date.getMonth()]} ${date.getFullYear()}`
 }
 
 export function getDaysInMonth(year, month) {
@@ -26,8 +32,11 @@ export function generateCalendar(date) {
 
     //giorni del mese
     for (let i = 0; i < numDays; i++) {
+        let dateString = "" + year + "-" + (month+1) + "-" + day
         days.push(
-            <td key={i} className="text-center"> {day} </td>
+            <td key={i} className="text-center">
+                <Link to={`/calendar/${dateString}`} key={`${dateString}`}> {day} </Link>
+            </td>
         )
         day++
     }

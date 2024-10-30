@@ -17,7 +17,7 @@ const Login = ({ setAuthenticated }) =>  {
             body: JSON.stringify({username, password})
         })
       
-        const data = await res.json();
+        const data = await res.json()
       
         if (data.success) {
             setAuthenticated(true)

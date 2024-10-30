@@ -1,5 +1,39 @@
+.bglight {
+    background-color: #f0f0f0;
+}
+
+.bgevent {
+    background-color: rgb(255, 204, 143);
+}
+
+.wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.calendar-container {
+    flex: 3;
+    overflow: hidden; /*???*/
+}
+
+.calendar-table th,
+.calendar-table td {
+    padding: 0;
+    aspect-ratio: 1/1;
+}
+
+.event-box {
+    flex: 1;
+}
+
 @media (max-width: 576px) {
-    .calendar-table {
-        font-size: 0.8rem; /* Riduci il font */
+    .wrap {
+        flex-direction: column;
+        align-items: center;
     }
+    /* .calendar-table {
+        font-size: 0.8rem;
+    } */
 }
