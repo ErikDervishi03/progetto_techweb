@@ -1,0 +1,16 @@
+.fixed-bottom {
+    position: fixed;
+    bottom: 20px; /* Distanza dal fondo */
+    right: 20px; /* Distanza dal lato destro */
+  }
+  
+  .btn {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .btn:hover {
+    background-color: #0056b3; /* Colore del pulsante quando si passa il mouse */
+    transform: scale(1.1); /* Effetto di ingrandimento quando si passa il mouse */
+  }
+  

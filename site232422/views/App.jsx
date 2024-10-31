@@ -6,6 +6,7 @@ import Register from "./Register.jsx"
 import Calendar from "./Calendar.jsx"
 import Notes from "./Notes.jsx"
 import Pomodoro from "./Pomodoro.jsx"
+import NotesForm from './NotesForm.jsx';
 
 function App() {
     const [authenticated, setAuthenticated] = useState(false);
@@ -33,6 +34,7 @@ function App() {
                 <Route path="/register" element={authenticated ? <Navigate to="/" /> : <Register setAuthenticated={setAuthenticated}/> } />
                 <Route path="/calendar" element={authenticated ? <Calendar /> : <Navigate to="/login" />} />
                 <Route path="/notes" element={authenticated ? <Notes /> : <Navigate to="/login" />} />
+                <Route path="/form" element={authenticated ? <NotesForm /> : <Navigate to="/login" />} />
                 <Route path="/pomodoro" element={authenticated ? <Pomodoro /> : <Navigate to="/login" />} />
                 <Route path="/" element={authenticated ? <Home /> : <Navigate to="/login" />} />
             </Routes>

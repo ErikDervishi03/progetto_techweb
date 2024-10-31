@@ -18,6 +18,18 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model("User", userSchema)
 
+const noteSchema = new mongoose.Schema({ 
+        obj: String,
+        startingDate: {type: Date}, 
+        endingDate: {type: Date},
+        priority: String,
+        category: String,
+        done : { type: Boolean, default: false },
+        content: String
+})
+
+const Note = mongoose.model("Note", noteSchema)
+
 //gestione sessione
 app.use(session({
     secret: 'site232422key',
@@ -90,6 +102,36 @@ app.get('/api/auth-check', (req, res) => {
         res.status(401).json({ authenticated: false })
     }
 })
+
+app.get('/api/notes', async (req, res) => {
+    try {
+      const notes = await Note.find();
+      res.json(notes);
+    } catch (err) {
+      res.status(500).json({ message: err.message });
+    }
+  });
+
+app.post('/api/newnote', async (req,res) => {
+    try{
+        var newNote = new Note ({
+            obj: req.body.obj,
+            startingDate: req.body.startingDate,
+            endingDate: req.body.endingDate,
+            prio: req.body.prio,
+            category: req.body.category, 
+            done: false,
+            content: req.body.content
+        })
+        newNote.save()
+        res.status(200).json({ success: true, message: "Soldi nella lista delle cose da far aggiunto" })
+    }
+    catch(error){
+        console.error("Errore durante il salvataggio:", error);
+        res.status(500).json({ success: false, message: "Errore del server durante il salvataggio della nota" });
+    }
+})
+
 
 //ascolta sulla porta default 3000
 app.listen(3000)
