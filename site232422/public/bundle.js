@@ -1,5 +1,4 @@
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./node_modules/@remix-run/router/dist/router.js":
@@ -8,6 +7,7 @@
   \*******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   AbortedDeferredError: () => (/* binding */ AbortedDeferredError),
@@ -5073,12 +5073,121 @@ function persistAppliedTransitions(_window, transitions) {
 
 /***/ }),
 
+/***/ "./node_modules/@restart/ui/esm/Button.js":
+/*!************************************************!*\
+  !*** ./node_modules/@restart/ui/esm/Button.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   isTrivialHref: () => (/* binding */ isTrivialHref),
+/* harmony export */   useButtonProps: () => (/* binding */ useButtonProps)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+const _excluded = ["as", "disabled"];
+function _objectWithoutPropertiesLoose(r, e) { if (null == r) return {}; var t = {}; for (var n in r) if ({}.hasOwnProperty.call(r, n)) { if (e.indexOf(n) >= 0) continue; t[n] = r[n]; } return t; }
+
+
+function isTrivialHref(href) {
+  return !href || href.trim() === '#';
+}
+function useButtonProps({
+  tagName,
+  disabled,
+  href,
+  target,
+  rel,
+  role,
+  onClick,
+  tabIndex = 0,
+  type
+}) {
+  if (!tagName) {
+    if (href != null || target != null || rel != null) {
+      tagName = 'a';
+    } else {
+      tagName = 'button';
+    }
+  }
+  const meta = {
+    tagName
+  };
+  if (tagName === 'button') {
+    return [{
+      type: type || 'button',
+      disabled
+    }, meta];
+  }
+  const handleClick = event => {
+    if (disabled || tagName === 'a' && isTrivialHref(href)) {
+      event.preventDefault();
+    }
+    if (disabled) {
+      event.stopPropagation();
+      return;
+    }
+    onClick == null ? void 0 : onClick(event);
+  };
+  const handleKeyDown = event => {
+    if (event.key === ' ') {
+      event.preventDefault();
+      handleClick(event);
+    }
+  };
+  if (tagName === 'a') {
+    // Ensure there's a href so Enter can trigger anchor button.
+    href || (href = '#');
+    if (disabled) {
+      href = undefined;
+    }
+  }
+  return [{
+    role: role != null ? role : 'button',
+    // explicitly undefined so that it overrides the props disabled in a spread
+    // e.g. <Tag {...props} {...hookProps} />
+    disabled: undefined,
+    tabIndex: disabled ? undefined : tabIndex,
+    href,
+    target: tagName === 'a' ? target : undefined,
+    'aria-disabled': !disabled ? undefined : disabled,
+    rel: tagName === 'a' ? rel : undefined,
+    onClick: handleClick,
+    onKeyDown: handleKeyDown
+  }, meta];
+}
+const Button = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.forwardRef((_ref, ref) => {
+  let {
+      as: asProp,
+      disabled
+    } = _ref,
+    props = _objectWithoutPropertiesLoose(_ref, _excluded);
+  const [buttonProps, {
+    tagName: Component
+  }] = useButtonProps(Object.assign({
+    tagName: asProp,
+    disabled
+  }, props));
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(Component, Object.assign({}, props, buttonProps, {
+    ref: ref
+  }));
+});
+Button.displayName = 'Button';
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Button);
+
+/***/ }),
+
 /***/ "./public/scripts/AddEventForm.js":
 /*!****************************************!*\
   !*** ./public/scripts/AddEventForm.js ***!
   \****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
@@ -5253,6 +5362,7 @@ var form = {
   \*************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   generateCalendar: () => (/* binding */ generateCalendar),
@@ -5320,6 +5430,7 @@ function generateCalendar(date) {
   \***********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -5437,6 +5548,7 @@ function App() {
   \****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -5516,6 +5628,7 @@ function Calendar() {
   \************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -5539,6 +5652,7 @@ function Home() {
   \*************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -5666,6 +5780,7 @@ var Login = function Login(_ref) {
   \*************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -5689,18 +5804,214 @@ function Notes() {
   \****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_Navbar_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Navbar.jsx */ "./views/components/Navbar.jsx");
+/* harmony import */ var _public_style_Pomodoro_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../public/style/Pomodoro.css */ "./public/style/Pomodoro.css");
+/* harmony import */ var _components_pomodoro_header_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/pomodoro/header.jsx */ "./views/components/pomodoro/header.jsx");
+/* harmony import */ var _components_pomodoro_controls_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/pomodoro/controls.jsx */ "./views/components/pomodoro/controls.jsx");
+/* harmony import */ var _components_pomodoro_timerdisplay_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/pomodoro/timerdisplay.jsx */ "./views/components/pomodoro/timerdisplay.jsx");
+/* harmony import */ var _components_pomodoro_settings_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/pomodoro/settings.jsx */ "./views/components/pomodoro/settings.jsx");
+/* harmony import */ var _components_Navbar_jsx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/Navbar.jsx */ "./views/components/Navbar.jsx");
+/* harmony import */ var _components_pomodoro_commands_jsx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/pomodoro/commands.jsx */ "./views/components/pomodoro/commands.jsx");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var use_sound__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! use-sound */ "./node_modules/use-sound/dist/use-sound.esm.js");
+/* harmony import */ var _public_sounds_timesUp_mp3__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../public/sounds/timesUp.mp3 */ "./public/sounds/timesUp.mp3");
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+
+
+
+
+
+ // Import the Commands component
+
 
 
 
 function Pomodoro() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Navbar_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Pomodoro"));
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_7__.useState)(false),
+    _useState2 = _slicedToArray(_useState, 2),
+    settingsVisible = _useState2[0],
+    setSettingsVisible = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_7__.useState)('pomo'),
+    _useState4 = _slicedToArray(_useState3, 2),
+    timerMode = _useState4[0],
+    setTimerMode = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_7__.useState)('study'),
+    _useState6 = _slicedToArray(_useState5, 2),
+    pomoMode = _useState6[0],
+    setPomoMode = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_7__.useState)(0),
+    _useState8 = _slicedToArray(_useState7, 2),
+    cicles = _useState8[0],
+    setCicles = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_7__.useState)(0.1),
+    _useState10 = _slicedToArray(_useState9, 2),
+    pomoStudyTime = _useState10[0],
+    setpomoStudyTime = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_7__.useState)(5),
+    _useState12 = _slicedToArray(_useState11, 2),
+    pomoBreakTime = _useState12[0],
+    setPomoBreakTime = _useState12[1];
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_7__.useState)(3),
+    _useState14 = _slicedToArray(_useState13, 2),
+    shortLength = _useState14[0],
+    setShortLength = _useState14[1];
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_7__.useState)(15),
+    _useState16 = _slicedToArray(_useState15, 2),
+    longLength = _useState16[0],
+    setLongLength = _useState16[1];
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_7__.useState)('kumbh'),
+    _useState18 = _slicedToArray(_useState17, 2),
+    fontPref = _useState18[0],
+    setFontPref = _useState18[1];
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_7__.useState)('default'),
+    _useState20 = _slicedToArray(_useState19, 2),
+    accentColor = _useState20[0],
+    setAccentColor = _useState20[1];
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_7__.useState)(pomoStudyTime * 60),
+    _useState22 = _slicedToArray(_useState21, 2),
+    secondsLeft = _useState22[0],
+    setSecondsLeft = _useState22[1];
+  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_7__.useState)(false),
+    _useState24 = _slicedToArray(_useState23, 2),
+    isActive = _useState24[0],
+    setIsActive = _useState24[1];
+  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_7__.useState)('START'),
+    _useState26 = _slicedToArray(_useState25, 2),
+    buttonText = _useState26[0],
+    setButtonText = _useState26[1];
+  var _useState27 = (0,react__WEBPACK_IMPORTED_MODULE_7__.useState)(1),
+    _useState28 = _slicedToArray(_useState27, 2),
+    volume = _useState28[0],
+    setVolume = _useState28[1];
+  var _useSound = (0,use_sound__WEBPACK_IMPORTED_MODULE_8__["default"])(_public_sounds_timesUp_mp3__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      volume: volume
+    }),
+    _useSound2 = _slicedToArray(_useSound, 1),
+    timesUp = _useSound2[0];
+  (0,react__WEBPACK_IMPORTED_MODULE_7__.useEffect)(function () {
+    if (Notification.permission !== "granted") {
+      Notification.requestPermission();
+    }
+  }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_7__.useEffect)(function () {
+    if (isActive) {
+      var interval = setInterval(function () {
+        setSecondsLeft(function (secondsLeft) {
+          return secondsLeft - 1;
+        });
+      }, 1000);
+      if (secondsLeft === 0) {
+        clearInterval(interval);
+        setIsActive(false);
+        setButtonText('');
+        notify(pomoMode);
+      }
+      return function () {
+        return clearInterval(interval);
+      };
+    }
+  }, [isActive, secondsLeft, timesUp]);
+  var notify = function notify(title, message) {
+    if (Notification.permission === "granted") {
+      new Notification(title, {
+        body: message
+      });
+    }
+  };
+  var handleTimerChange = function handleTimerChange(newMode) {
+    setTimerMode(newMode);
+    setSecondsLeft(getLengthByMode(newMode) * 60);
+  };
+  var getLengthByMode = function getLengthByMode(mode) {
+    if (mode === 'pomo') {
+      return pomoMode === 'study' ? pomoStudyTime : pomoBreakTime;
+    }
+    if (mode === 'short') return shortLength;
+    if (mode === 'long') return longLength;
+    return pomoStudyTime;
+  };
+  var toggleSettingsVisibility = function toggleSettingsVisibility() {
+    setSettingsVisible(!settingsVisible);
+  };
+  var formatTimeLeft = function formatTimeLeft(seconds) {
+    return "".concat(Math.floor(seconds / 60), ":").concat(seconds % 60 > 9 ? seconds % 60 : '0' + seconds % 60);
+  };
+  var calcPercentage = function calcPercentage() {
+    return secondsLeft / (getLengthByMode(timerMode) * 60) * 100;
+  };
+  var handleRepeat = function handleRepeat() {
+    setPomoMode('study');
+    setSecondsLeft(pomoStudyTime * 60);
+  };
+  var handlePlayPause = function handlePlayPause() {
+    setIsActive(!isActive);
+    setButtonText(isActive ? 'START' : 'PAUSE');
+  };
+  var handleNextCycle = function handleNextCycle() {
+    if (timerMode === 'pomo') {
+      setCicles(cicles + 1);
+      setPomoMode('study');
+    }
+    setSecondsLeft(getLengthByMode(timerMode) * 60);
+  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default().createElement((react__WEBPACK_IMPORTED_MODULE_7___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default().createElement(_components_Navbar_jsx__WEBPACK_IMPORTED_MODULE_5__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default().createElement("div", {
+    className: "pomodoro-app"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default().createElement(_components_pomodoro_timerdisplay_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    timerMode: timerMode,
+    percentage: calcPercentage(),
+    timeLeft: formatTimeLeft(secondsLeft),
+    setSecondsLeft: setSecondsLeft,
+    pomoStudyTime: pomoStudyTime,
+    pomoBreakTime: pomoBreakTime,
+    pomoMode: pomoMode,
+    setPomoMode: setPomoMode,
+    cicles: cicles,
+    setCicles: setCicles,
+    isActive: isActive,
+    setIsActive: setIsActive,
+    buttonText: buttonText,
+    setButtonText: setButtonText,
+    volume: volume,
+    setVolume: setVolume
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default().createElement(_components_pomodoro_commands_jsx__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    onRepeat: handleRepeat,
+    onPlayPause: handlePlayPause,
+    onNextCycle: handleNextCycle,
+    isActive: isActive,
+    toggleSettingsVisibility: toggleSettingsVisibility // Pass visibility toggle
+    ,
+    cicles: cicles
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default().createElement(_components_pomodoro_settings_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    visible: settingsVisible,
+    toggleSettingsVisibility: toggleSettingsVisibility,
+    pomoStudyTime: pomoStudyTime,
+    pomoBreakTime: pomoBreakTime,
+    pomoMode: pomoMode,
+    setpomoStudyTime: setpomoStudyTime,
+    setPomoBreakTime: setPomoBreakTime,
+    shortLength: shortLength,
+    setShortLength: setShortLength,
+    longLength: longLength,
+    setLongLength: setLongLength,
+    fontPref: fontPref,
+    setFontPref: setFontPref,
+    accentColor: accentColor,
+    setAccentColor: setAccentColor,
+    closeSettings: toggleSettingsVisibility,
+    setSecondsLeft: setSecondsLeft,
+    timerMode: timerMode
+  })));
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Pomodoro);
 
@@ -5712,6 +6023,7 @@ function Pomodoro() {
   \****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -5860,6 +6172,7 @@ var Register = function Register(_ref) {
   \*************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -6001,6 +6314,7 @@ var Navbar = function Navbar() {
   \******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -6176,6 +6490,7 @@ function AddEventsPopup(_ref) {
   \**************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -6305,12 +6620,722 @@ function DayDetails() {
 
 /***/ }),
 
+/***/ "./views/components/pomodoro/button.jsx":
+/*!**********************************************!*\
+  !*** ./views/components/pomodoro/button.jsx ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+var Button = function Button(_ref) {
+  var type = _ref.type,
+    _ref$buttonText = _ref.buttonText,
+    buttonText = _ref$buttonText === void 0 ? '' : _ref$buttonText,
+    toggleVisibility = _ref.toggleVisibility;
+  if (type === 'settings') {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+      className: "pomodoro-app__preferences",
+      name: "settings",
+      title: "show preferences pane",
+      onClick: toggleVisibility
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("i", {
+      className: "bi bi-gear h2"
+    }));
+  }
+  if (type === 'close') {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+      className: "pane__close-preferences",
+      onClick: toggleVisibility
+    }, buttonText);
+  }
+  if (type === 'apply') {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "pane__apply-row"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+      type: "submit",
+      value: buttonText,
+      className: "pane__apply-preferences"
+    }));
+  } else {
+    return null;
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Button);
+
+/***/ }),
+
+/***/ "./views/components/pomodoro/commands.jsx":
+/*!************************************************!*\
+  !*** ./views/components/pomodoro/commands.jsx ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/ButtonGroup.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Button.js");
+
+
+function Commands(_ref) {
+  var onRepeat = _ref.onRepeat,
+    onPlayPause = _ref.onPlayPause,
+    onNextCycle = _ref.onNextCycle,
+    isActive = _ref.isActive,
+    toggleSettingsVisibility = _ref.toggleSettingsVisibility,
+    cicles = _ref.cicles;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "commands d-flex align-items-center justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "cicle: ", cicles), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    title: "repeat cycle",
+    variant: "link",
+    onClick: onRepeat,
+    className: "commands__button",
+    disabled: isActive
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("i", {
+    className: "bi bi-arrow-clockwise",
+    style: {
+      fontSize: '20px'
+    }
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    variant: "link",
+    onClick: onPlayPause,
+    className: "commands__button"
+  }, isActive ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("i", {
+    className: "bi bi-pause",
+    title: "pause",
+    style: {
+      fontSize: '35px'
+    }
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("i", {
+    className: "bi bi-play-circle",
+    title: "start",
+    style: {
+      fontSize: '35px'
+    }
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    title: "next cycle",
+    variant: "link",
+    onClick: onNextCycle,
+    className: "commands__button",
+    disabled: isActive
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("i", {
+    className: "bi bi-arrow-right-circle",
+    style: {
+      fontSize: '20px'
+    }
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    title: "setting",
+    variant: "link",
+    onClick: toggleSettingsVisibility // Use onClick to toggle settings visibility
+    ,
+    className: "commands__button"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("i", {
+    className: "bi bi-gear",
+    style: {
+      fontSize: '20px'
+    }
+  }))));
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Commands);
+
+/***/ }),
+
+/***/ "./views/components/pomodoro/controls.jsx":
+/*!************************************************!*\
+  !*** ./views/components/pomodoro/controls.jsx ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var use_sound__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! use-sound */ "./node_modules/use-sound/dist/use-sound.esm.js");
+/* harmony import */ var _public_sounds_slide_mp3__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../public/sounds/slide.mp3 */ "./public/sounds/slide.mp3");
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+
+
+var Controls = function Controls(_ref) {
+  var timerMode = _ref.timerMode,
+    setTimerMode = _ref.setTimerMode,
+    setSecondsLeft = _ref.setSecondsLeft,
+    pomoStudyTime = _ref.pomoStudyTime,
+    pomoBreakTime = _ref.pomoBreakTime,
+    shortLength = _ref.shortLength,
+    longLength = _ref.longLength,
+    setIsActive = _ref.setIsActive,
+    setButtonText = _ref.setButtonText,
+    volume = _ref.volume;
+  var _useSound = (0,use_sound__WEBPACK_IMPORTED_MODULE_1__["default"])(_public_sounds_slide_mp3__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      volume: volume
+    }),
+    _useSound2 = _slicedToArray(_useSound, 1),
+    playSfx = _useSound2[0];
+  var handleModeChange = function handleModeChange(event) {
+    setTimerMode(event.target.id);
+    setIsActive(false);
+    setButtonText('START');
+    switch (event.target.id) {
+      case 'short':
+        setSecondsLeft(shortLength * 60);
+        break;
+      case 'long':
+        setSecondsLeft(longLength * 60);
+        break;
+      default:
+        setSecondsLeft(pomoStudyTime * 60);
+    }
+  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+    className: "controls"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "radio",
+    id: "pomo",
+    name: "mode",
+    checked: timerMode === 'pomo',
+    onClick: playSfx,
+    onChange: handleModeChange
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "pomo",
+    className: "controls__button"
+  }, "pomodoro"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "radio",
+    id: "short",
+    name: "mode",
+    checked: timerMode === 'short',
+    onClick: playSfx,
+    onChange: handleModeChange
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "short",
+    className: "controls__button"
+  }, "short break"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "radio",
+    id: "long",
+    name: "mode",
+    checked: timerMode === 'long',
+    onClick: playSfx,
+    onChange: handleModeChange
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "long",
+    className: "controls__button"
+  }, "long break"));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Controls);
+
+/***/ }),
+
+/***/ "./views/components/pomodoro/header.jsx":
+/*!**********************************************!*\
+  !*** ./views/components/pomodoro/header.jsx ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+var Header = function Header(_ref) {
+  var title = _ref.title;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, title);
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Header);
+
+/***/ }),
+
+/***/ "./views/components/pomodoro/mutetoggle.jsx":
+/*!**************************************************!*\
+  !*** ./views/components/pomodoro/mutetoggle.jsx ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+var MuteToggle = function MuteToggle(_ref) {
+  var volume = _ref.volume,
+    setVolume = _ref.setVolume;
+  var handleClick = function handleClick(event) {
+    if (volume === 0) {
+      setVolume(1);
+    } else {
+      setVolume(0);
+    }
+  };
+  if (volume === 0) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+      className: "display__mute",
+      id: "muteButton",
+      title: "mute button",
+      onClick: handleClick
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", {
+      xmlns: "http://www.w3.org/2000/svg",
+      fill: "none",
+      stroke: "currentColor",
+      viewBox: "0 0 24 24"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", {
+      strokeLinecap: "round",
+      strokeLinejoin: "round",
+      strokeWidth: "2",
+      d: "M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z",
+      clipRule: "evenodd"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", {
+      strokeLinecap: "round",
+      strokeLinejoin: "round",
+      strokeWidth: "2",
+      d: "M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"
+    })));
+  } else {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+      className: "display__mute",
+      id: "muteButton",
+      title: "mute button",
+      onClick: handleClick
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", {
+      xmlns: "http://www.w3.org/2000/svg",
+      fill: "none",
+      stroke: "currentColor",
+      viewBox: "0 0 24 24"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", {
+      strokeLinecap: "round",
+      strokeLinejoin: "round",
+      strokeWidth: "2",
+      d: "M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"
+    })));
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MuteToggle);
+
+/***/ }),
+
+/***/ "./views/components/pomodoro/settings.jsx":
+/*!************************************************!*\
+  !*** ./views/components/pomodoro/settings.jsx ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _button_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./button.jsx */ "./views/components/pomodoro/button.jsx");
+
+
+var Settings = function Settings(_ref) {
+  var visible = _ref.visible,
+    toggleSettingsVisibility = _ref.toggleSettingsVisibility,
+    pomoStudyTime = _ref.pomoStudyTime,
+    pomoBreakTime = _ref.pomoBreakTime,
+    pomoMode = _ref.pomoMode,
+    setpomoStudyTime = _ref.setpomoStudyTime,
+    setPomoBreakTime = _ref.setPomoBreakTime,
+    shortLength = _ref.shortLength,
+    setShortLength = _ref.setShortLength,
+    longLength = _ref.longLength,
+    setLongLength = _ref.setLongLength,
+    fontPref = _ref.fontPref,
+    setFontPref = _ref.setFontPref,
+    accentColor = _ref.accentColor,
+    setAccentColor = _ref.setAccentColor,
+    closeSettings = _ref.closeSettings,
+    setSecondsLeft = _ref.setSecondsLeft,
+    timerMode = _ref.timerMode;
+  var colors = {
+    "default": '#F87070',
+    blue: '#70F3F8',
+    purple: '#D881F8'
+  };
+  var fonts = {
+    kumbh: "'Kumbh Sans', sans-serif",
+    roboto: "'Roboto Slab', serif",
+    space: "'Space Mono', monospace"
+  };
+  var styles = document.documentElement.style;
+  var applySettings = function applySettings(event) {
+    event.preventDefault();
+    setpomoStudyTime(event.target.pomoStudyTime.value);
+    setPomoBreakTime(event.target.breakTime.value);
+    setFontPref(event.target.font.value);
+    setAccentColor(event.target.color.value);
+    closeSettings();
+    styles.setProperty("--font-current", fonts[event.target.font.value]);
+    styles.setProperty("--accent-color", colors[event.target.color.value]);
+    if (pomoMode === 'study') setSecondsLeft(event.target.pomoStudyTime.value * 60);else setSecondsLeft(event.target.breakTime.value * 60);
+  };
+  if (visible) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "preferences preferences--visible"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "preferences__pane"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_button_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      type: "close",
+      buttonText: "\xD7",
+      toggleVisibility: toggleSettingsVisibility
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Settings"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+      onSubmit: applySettings
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "pane__time-settings"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Time (Minutes)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      action: "",
+      className: "time-settings__form"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+      htmlFor: "pomoStudyTime"
+    }, "study time"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+      type: "number",
+      name: "pomoStudyTime",
+      id: "pomoStudyTime",
+      min: "5",
+      max: "90",
+      defaultValue: pomoStudyTime
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+      htmlFor: "breakTime"
+    }, "break time"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+      type: "number",
+      name: "breakTime",
+      id: "breakTime",
+      min: "1",
+      max: "14",
+      defaultValue: pomoBreakTime
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+      htmlFor: "long-break"
+    }, "total minutes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+      type: "number",
+      name: "longBreak",
+      id: "long-break",
+      min: "15",
+      max: "30",
+      defaultValue: longLength
+    }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "pane__font-preference"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Font"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+      type: "radio",
+      id: "fontPref1",
+      name: "font",
+      value: "kumbh",
+      defaultChecked: fontPref === 'kumbh'
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+      htmlFor: "fontPref1",
+      className: "font-preference__kumbh"
+    }, "Aa"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+      type: "radio",
+      id: "fontPref2",
+      name: "font",
+      value: "roboto",
+      defaultChecked: fontPref === 'roboto'
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+      htmlFor: "fontPref2",
+      className: "font-preference__roboto"
+    }, "Aa"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+      type: "radio",
+      id: "fontPref3",
+      name: "font",
+      value: "space",
+      defaultChecked: fontPref === 'space'
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+      htmlFor: "fontPref3",
+      className: "font-preference__space"
+    }, "Aa")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "pane__color-preference"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+      type: "radio",
+      id: "colorPref1",
+      name: "color",
+      value: "default",
+      defaultChecked: accentColor === 'default'
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+      htmlFor: "colorPref1",
+      className: "color-preference__default"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+      type: "radio",
+      id: "colorPref2",
+      name: "color",
+      value: "blue",
+      defaultChecked: accentColor === 'blue'
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+      htmlFor: "colorPref2",
+      className: "color-preference__blue"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+      type: "radio",
+      id: "colorPref3",
+      name: "color",
+      value: "purple",
+      defaultChecked: accentColor === 'purple'
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+      htmlFor: "colorPref3",
+      className: "color-preference__purple"
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_button_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      type: "apply",
+      buttonText: "Apply"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "spotify-embed"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("iframe", {
+      style: {
+        borderRadius: "12px"
+      },
+      src: "https://open.spotify.com/embed/playlist/4Zjli1P13J5mmSCD5iKAXK?utm_source=generator&theme=0",
+      width: "100%",
+      height: "100vh",
+      allow: "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture",
+      loading: "lazy"
+    })))));
+  }
+  return null;
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Settings);
+
+/***/ }),
+
+/***/ "./views/components/pomodoro/timerdisplay.jsx":
+/*!****************************************************!*\
+  !*** ./views/components/pomodoro/timerdisplay.jsx ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _mutetoggle_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./mutetoggle.jsx */ "./views/components/pomodoro/mutetoggle.jsx");
+/* harmony import */ var react_circular_progressbar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-circular-progressbar */ "./node_modules/react-circular-progressbar/dist/index.esm.js");
+/* harmony import */ var react_circular_progressbar_dist_styles_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-circular-progressbar/dist/styles.css */ "./node_modules/react-circular-progressbar/dist/styles.css");
+/* harmony import */ var use_sound__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! use-sound */ "./node_modules/use-sound/dist/use-sound.esm.js");
+/* harmony import */ var _public_sounds_startTimer_mp3__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../public/sounds/startTimer.mp3 */ "./public/sounds/startTimer.mp3");
+/* harmony import */ var _public_sounds_pauseTimer_mp3__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../public/sounds/pauseTimer.mp3 */ "./public/sounds/pauseTimer.mp3");
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+
+
+
+
+
+
+var TimerDisplay = function TimerDisplay(_ref) {
+  var timerMode = _ref.timerMode,
+    percentage = _ref.percentage,
+    timeLeft = _ref.timeLeft,
+    setSecondsLeft = _ref.setSecondsLeft,
+    pomoStudyTime = _ref.pomoStudyTime,
+    pomoBreakTime = _ref.pomoBreakTime,
+    pomoMode = _ref.pomoMode,
+    setPomoMode = _ref.setPomoMode,
+    cicles = _ref.cicles,
+    setCicles = _ref.setCicles,
+    isActive = _ref.isActive,
+    setIsActive = _ref.setIsActive,
+    buttonText = _ref.buttonText,
+    setButtonText = _ref.setButtonText,
+    volume = _ref.volume,
+    setVolume = _ref.setVolume;
+  var _useSound = (0,use_sound__WEBPACK_IMPORTED_MODULE_4__["default"])(_public_sounds_startTimer_mp3__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      interrupt: true,
+      volume: volume
+    }),
+    _useSound2 = _slicedToArray(_useSound, 1),
+    play = _useSound2[0];
+  var _useSound3 = (0,use_sound__WEBPACK_IMPORTED_MODULE_4__["default"])(_public_sounds_pauseTimer_mp3__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      interrupt: true,
+      volume: volume
+    }),
+    _useSound4 = _slicedToArray(_useSound3, 1),
+    pause = _useSound4[0];
+  var handleClick = function handleClick(event) {
+    if (event.target.id === 'muteButton') {
+      return null;
+    }
+    if (timeLeft === '0:00') {
+      if (timerMode === 'pomo') {
+        setIsActive(false);
+        setButtonText('START');
+        if (pomoMode === 'study') {
+          setSecondsLeft(pomoBreakTime * 60);
+          setPomoMode('break');
+        } else {
+          setSecondsLeft(pomoStudyTime * 60);
+          setPomoMode('study');
+          setCicles(cicles + 1);
+        }
+      }
+      return null;
+    }
+    if (isActive) {
+      pause();
+    } else {
+      play();
+    }
+    setIsActive(!isActive);
+    setButtonText(buttonText === 'START' || buttonText === 'RESUME' ? 'PAUSE' : 'RESUME');
+  };
+  var timesUpMsg = timerMode === 'pomo' ? 'Time for a break' : 'Back to work!';
+  var timeText = timeLeft === '0:00' ? timesUpMsg : timeLeft;
+  var textSize = timeLeft === '0:00' ? '12px' : '28px';
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "timer",
+    onClick: handleClick
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "timer__display"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_circular_progressbar__WEBPACK_IMPORTED_MODULE_2__.CircularProgressbarWithChildren, {
+    value: percentage,
+    text: timeText,
+    strokeWidth: 4,
+    styles: (0,react_circular_progressbar__WEBPACK_IMPORTED_MODULE_2__.buildStyles)({
+      pathTransitionDuration: 0.5,
+      pathColor: 'var(--accent-color)',
+      textColor: 'white',
+      textSize: textSize,
+      fontFamily: 'var(--font-current)',
+      trailColor: 'none'
+    })
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_mutetoggle_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    volume: volume,
+    setVolume: setVolume
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "display__start-pause"
+  }, pomoMode.toUpperCase()))));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TimerDisplay);
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/react-circular-progressbar/dist/styles.css":
+/*!*******************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/react-circular-progressbar/dist/styles.css ***!
+  \*******************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../css-loader/dist/runtime/sourceMaps.js */ "./node_modules/css-loader/dist/runtime/sourceMaps.js");
+/* harmony import */ var _css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, `/*
+ * react-circular-progressbar styles
+ * All of the styles in this file are configurable!
+ */
+
+.CircularProgressbar {
+  /*
+   * This fixes an issue where the CircularProgressbar svg has
+   * 0 width inside a "display: flex" container, and thus not visible.
+   */
+  width: 100%;
+  /*
+   * This fixes a centering issue with CircularProgressbarWithChildren:
+   * https://github.com/kevinsqi/react-circular-progressbar/issues/94
+   */
+  vertical-align: middle;
+}
+
+.CircularProgressbar .CircularProgressbar-path {
+  stroke: #3e98c7;
+  stroke-linecap: round;
+  -webkit-transition: stroke-dashoffset 0.5s ease 0s;
+  transition: stroke-dashoffset 0.5s ease 0s;
+}
+
+.CircularProgressbar .CircularProgressbar-trail {
+  stroke: #d6d6d6;
+  /* Used when trail is not full diameter, i.e. when props.circleRatio is set */
+  stroke-linecap: round;
+}
+
+.CircularProgressbar .CircularProgressbar-text {
+  fill: #3e98c7;
+  font-size: 20px;
+  dominant-baseline: middle;
+  text-anchor: middle;
+}
+
+.CircularProgressbar .CircularProgressbar-background {
+  fill: #d6d6d6;
+}
+
+/*
+ * Sample background styles. Use these with e.g.:
+ *
+ *   <CircularProgressbar
+ *     className="CircularProgressbar-inverted"
+ *     background
+ *     percentage={50}
+ *   />
+ */
+.CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-background {
+  fill: #3e98c7;
+}
+
+.CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-text {
+  fill: #fff;
+}
+
+.CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-path {
+  stroke: #fff;
+}
+
+.CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-trail {
+  stroke: transparent;
+}
+`, "",{"version":3,"sources":["webpack://./node_modules/react-circular-progressbar/dist/styles.css"],"names":[],"mappings":"AAAA;;;EAGE;;AAEF;EACE;;;IAGE;EACF,WAAW;EACX;;;IAGE;EACF,sBAAsB;AACxB;;AAEA;EACE,eAAe;EACf,qBAAqB;EACrB,kDAAkD;EAClD,0CAA0C;AAC5C;;AAEA;EACE,eAAe;EACf,6EAA6E;EAC7E,qBAAqB;AACvB;;AAEA;EACE,aAAa;EACb,eAAe;EACf,yBAAyB;EACzB,mBAAmB;AACrB;;AAEA;EACE,aAAa;AACf;;AAEA;;;;;;;;EAQE;AACF;EACE,aAAa;AACf;;AAEA;EACE,UAAU;AACZ;;AAEA;EACE,YAAY;AACd;;AAEA;EACE,mBAAmB;AACrB","sourcesContent":["/*\n * react-circular-progressbar styles\n * All of the styles in this file are configurable!\n */\n\n.CircularProgressbar {\n  /*\n   * This fixes an issue where the CircularProgressbar svg has\n   * 0 width inside a \"display: flex\" container, and thus not visible.\n   */\n  width: 100%;\n  /*\n   * This fixes a centering issue with CircularProgressbarWithChildren:\n   * https://github.com/kevinsqi/react-circular-progressbar/issues/94\n   */\n  vertical-align: middle;\n}\n\n.CircularProgressbar .CircularProgressbar-path {\n  stroke: #3e98c7;\n  stroke-linecap: round;\n  -webkit-transition: stroke-dashoffset 0.5s ease 0s;\n  transition: stroke-dashoffset 0.5s ease 0s;\n}\n\n.CircularProgressbar .CircularProgressbar-trail {\n  stroke: #d6d6d6;\n  /* Used when trail is not full diameter, i.e. when props.circleRatio is set */\n  stroke-linecap: round;\n}\n\n.CircularProgressbar .CircularProgressbar-text {\n  fill: #3e98c7;\n  font-size: 20px;\n  dominant-baseline: middle;\n  text-anchor: middle;\n}\n\n.CircularProgressbar .CircularProgressbar-background {\n  fill: #d6d6d6;\n}\n\n/*\n * Sample background styles. Use these with e.g.:\n *\n *   <CircularProgressbar\n *     className=\"CircularProgressbar-inverted\"\n *     background\n *     percentage={50}\n *   />\n */\n.CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-background {\n  fill: #3e98c7;\n}\n\n.CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-text {\n  fill: #fff;\n}\n\n.CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-path {\n  stroke: #fff;\n}\n\n.CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-trail {\n  stroke: transparent;\n}\n"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js!./public/style/AddEventPopup.css":
 /*!******************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./public/style/AddEventPopup.css ***!
   \******************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -6344,6 +7369,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.transparent {
   \*************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -6403,12 +7429,636 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.bglight {
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/cjs.js!./public/style/Pomodoro.css":
+/*!*************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./public/style/Pomodoro.css ***!
+  \*************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/sourceMaps.js */ "./node_modules/css-loader/dist/runtime/sourceMaps.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/getUrl.js */ "./node_modules/css-loader/dist/runtime/getUrl.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2__);
+// Imports
+
+
+
+var ___CSS_LOADER_URL_IMPORT_0___ = new URL(/* asset import */ __webpack_require__(/*! ./lofi-girl-lofi.gif */ "./public/style/lofi-girl-lofi.gif"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_1___ = new URL(/* asset import */ __webpack_require__(/*! data:image/svg+xml,%3Csvg width=%2714%27 height=%2721%27 viewBox=%270 0 14 21%27 fill=%27none%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath d=%27M1 6L7 2L13 6%27 stroke=%27%231E213F%27 stroke-opacity=%270.25%27 stroke-width=%272%27/%3E%3Cpath d=%27M1 15L7 19L13 15%27 stroke=%27%231E213F%27 stroke-opacity=%270.25%27 stroke-width=%272%27/%3E%3C/svg%3E%0A */ "data:image/svg+xml,%3Csvg width=%2714%27 height=%2721%27 viewBox=%270 0 14 21%27 fill=%27none%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath d=%27M1 6L7 2L13 6%27 stroke=%27%231E213F%27 stroke-opacity=%270.25%27 stroke-width=%272%27/%3E%3Cpath d=%27M1 15L7 19L13 15%27 stroke=%27%231E213F%27 stroke-opacity=%270.25%27 stroke-width=%272%27/%3E%3C/svg%3E%0A"), __webpack_require__.b);
+var ___CSS_LOADER_URL_IMPORT_2___ = new URL(/* asset import */ __webpack_require__(/*! data:image/svg+xml,%3Csvg width=%2715%27 height=%2711%27 viewBox=%270 0 15 11%27 fill=%27none%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath d=%27M1 5.5L4.95263 9.45263L13.4053 1%27 stroke=%27%23161932%27 stroke-width=%272%27/%3E%3C/svg%3E%0A */ "data:image/svg+xml,%3Csvg width=%2715%27 height=%2711%27 viewBox=%270 0 15 11%27 fill=%27none%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath d=%27M1 5.5L4.95263 9.45263L13.4053 1%27 stroke=%27%23161932%27 stroke-width=%272%27/%3E%3C/svg%3E%0A"), __webpack_require__.b);
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap);"]);
+___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap);"]);
+___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap);"]);
+var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_0___);
+var ___CSS_LOADER_URL_REPLACEMENT_1___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_1___);
+var ___CSS_LOADER_URL_REPLACEMENT_2___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_2___);
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, `:root {
+  --accent-color: #f87070;
+  --background-body: #ffffff;
+  --text: #000000;
+  --text-dark: #1e213f;
+  --background-preferences: #ffffff;
+  --input-background: #eff1fa;
+  --background-timer: #ffffff;
+  --settings-heading: #161932;
+  --default-accent: #f87070;
+  --blue-accent: #70f3f8;
+  --purple-accent: #d881f8;
+
+  --font-current: "Kumbh Sans", sans-serif;
+  --font-default: "Kumbh Sans", sans-serif;
+  --font-roboto-slab: "Roboto Slab", serif;
+  --font-space-mono: "Space Mono", monospace;
+}
+
+
+.pomodoro-app {
+  justify-content: center;
+  padding: 0;
+  margin-top: 10vh;
+  background: var(--background-body);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--font-current);
+
+
+  h1 {
+    font-family: "Kumbh Sans", sans-serif;
+    color: var(--text);
+    text-align: center;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 24px;
+    margin-top: 32px;
+  }
+
+  .controls {
+    display: flex;
+    justify-content: space-between;
+    background: var(--background-timer);
+    border-radius: 31.5px;
+    width: 327px;
+    min-height: 63px;
+    padding: 8px 6px 8px 6px;
+    margin: px 0 48px 0;
+    z-index: 100;
+  }
+
+  /* hide radio inputs so the labels can be styled */
+  /* display: none; will make them unfocusable / no keyboard navigation */
+  .controls input[type="radio"] {
+    opacity: 0;
+    position: fixed;
+    width: 0;
+  }
+
+  .controls__button {
+    display: flex;
+    align-items: center;
+    height: 48px;
+    border: none;
+    border-radius: 26.5px;
+    background: var(--background-timer);
+    padding: 0 15px 0 15px;
+
+    font-family: var(--font-current);
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    text-align: center;
+    color: var(--text);
+    mix-blend-mode: normal;
+    opacity: 0.4;
+    cursor: pointer;
+  }
+
+  .controls input[type="radio"]:checked + label {
+    color: var(--text-dark);
+    opacity: 1;
+    background: var(--accent-color);
+    animation-name: fade;
+    animation-timing-function: ease-in;
+    animation-duration: 0.05s;
+  }
+
+  .timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    width: 350px;
+    height: 350px;
+    border-radius: 90%;
+    background-image: url(${___CSS_LOADER_URL_REPLACEMENT_0___});
+    background-size: cover;
+    background-position: center;
+    box-shadow: -30px -30px 100px #272c5a, 30px 30px 100px #121530;
+    cursor: pointer;
+    color:white;
+  }
+  
+  .timer:active {
+    transform: scale(0.98);
+  }
+  
+  .timer__display {
+    height: 89.26%;
+    width: 89.26%;
+    padding: 11px;
+    border-radius: 90%;
+    background-image: url(${___CSS_LOADER_URL_REPLACEMENT_0___});
+    background-size: cover;
+    background-position: center;
+  }
+  
+  button.display__mute {
+    width: 35px;
+    height: 35px;
+    border: 0;
+    background-color: transparent;
+    color: white;
+    transition: color 0.3s ease-in-out;
+    cursor: pointer;
+  }
+
+  button.display__mute:hover {
+    color: #d7e0ff;
+  }
+
+  button:focus:not(:focus-visible) {
+    outline: 0;
+  }
+
+  .display__start-pause {
+    margin-top: 50%;
+    font-family: var(--font-default);
+    font-weight: bold;
+    font-size: 16px;
+    background : none;
+    border: 0;
+    color: white;
+    line-height: 16px;
+    letter-spacing: 15px;
+    margin-right: -15px; /* Accounts for extra whitespace letter-spacing introduced */
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+  }
+
+  .pomodoro-app__preferences {
+    margin-top: 79px;
+    background: none;
+    border: 0;
+    transition: transform 0.15s ease-in-out;
+    cursor: pointer;
+  }
+
+  .pomodoro-app__preferences:hover {
+    transform: scale(1.4) rotate(45deg);
+  }
+
+  .preferences {
+    z-index: 200;
+    position: fixed;
+    display: none;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  }
+
+  @keyframes fade {
+    from {
+      opacity: 0%;
+    }
+    to {
+      opacity: 100%;
+    }
+  }
+
+  .preferences--visible {
+    display: block;
+    animation-name: fade;
+    animation-timing-function: ease-in;
+    animation-duration: 0.15s;
+  }
+
+  .preferences__pane {
+    top: 46px;
+    width: 327px;
+    height: 549px;
+    background: var(--background-preferences);
+    border-radius: 15px;
+
+    position: relative;
+    margin: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: 3.25s all ease-in-out;
+  }
+
+  .preferences__pane h2 {
+    padding: 24px 0 28px 24px;
+    border-bottom: 1px solid #e3e1e1;
+    font-family: var(--font-default);
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 20px;
+    color: var(--settings-heading);
+  }
+
+  .pane__close-preferences {
+    border: none;
+    background: none;
+    position: absolute;
+    right: 24px;
+    top: 19px;
+    color: var(--background-body);
+    opacity: 0.5;
+    font-size: 24px;
+    transition: transform 0.15s ease-in-out;
+  }
+
+  .pane__close-preferences:hover {
+    transform: scale(1.65);
+    cursor: pointer;
+  }
+
+  h3 {
+    width: 100%;
+    text-align: center;
+    font-family: var(--font-default);
+    font-style: normal;
+    font-weight: bold;
+    font-size: 11px;
+    line-height: 11px;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 4.23077px;
+    color: var(--settings-heading);
+  }
+
+  .pane__time-settings,
+  .pane__color-preference {
+    margin-top: 28px;
+  }
+
+  .time-settings__form {
+    margin: 18px 24px 24px 23px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: center;
+    row-gap: 8px;
+  }
+
+  label {
+    font-family: var(--font-default);
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 12px;
+    color: var(--text-dark);
+    mix-blend-mode: normal;
+    opacity: 0.4;
+  }
+
+  input {
+    width: 140px;
+    height: 40px;
+    padding-left: 16px;
+    border: none;
+    border-radius: 10px;
+    background: var(--input-background);
+    font-family: var();
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 14px;
+    color: var(--text-dark);
+  }
+
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    margin-right: 16px;
+    -webkit-appearance: none;
+    background: url(${___CSS_LOADER_URL_REPLACEMENT_1___})
+      no-repeat center center;
+    height: 21px;
+    width: 14px;
+    opacity: 0.5; /* shows Spin Buttons per default (Chrome >= 39) */
+    cursor: pointer;
+  }
+
+  input[type="number"]::-webkit-inner-spin-button:hover,
+  input[type="number"]::-webkit-inner-spin-button:active {
+    opacity: 1;
+  }
+
+  /* hide radio inputs so the labels can be styled */
+  /* display: none; will make them unfocusable / no keyboard navigation */
+  .pane__color-preference input[type="radio"],
+  .pane__font-preference input[type="radio"] {
+    opacity: 0;
+    position: fixed;
+    width: 0;
+  }
+
+  .pane__color-preference input[type="radio"] + label,
+  .pane__font-preference input[type="radio"] + label {
+    opacity: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.25s ease-in-out, background-color 0.25s ease-in-out;
+    cursor: pointer;
+  }
+
+  .pane__color-preference input[type="radio"] + label:hover,
+  .pane__font-preference input[type="radio"] + label:hover {
+    transform: scale(1.1);
+  }
+
+  .pane__font-preference,
+  .pane__color-preference {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 24px 0 24px 0;
+    margin: 0 24px 0 24px;
+    border-width: 1px 0 1px 0;
+    border-style: solid;
+    border-color: #e3e1e1;
+  }
+
+  .pane__color-preference {
+    border: none;
+  }
+
+  .font-preference__kumbh,
+  .font-preference__roboto,
+  .font-preference__space,
+  .color-preference__default,
+  .color-preference__blue,
+  .color-preference__purple {
+    width: 40px;
+    height: 40px;
+    margin: 18px 8px 0 8px;
+    border: none;
+    border-radius: 90%;
+    font-size: 15px;
+  }
+
+  .font-preference__kumbh,
+  .font-preference__roboto,
+  .font-preference__space {
+    background: var(--input-background);
+    color: var(--text-dark);
+  }
+
+  .pane__font-preference input[type="radio"]:checked + label {
+    background: var(--settings-heading);
+    color: #fff;
+  }
+
+  .pane__font-preference input[type="radio"]:hover + label {
+    background: var(--settings-heading);
+    color: #fff;
+    opacity: 0.9;
+  }
+
+  .font-preference__kumbh {
+    font-family: var(--font-default);
+    font-weight: bold;
+    padding-top: 5px;
+  }
+
+  .font-preference__roboto {
+    font-family: var(--font-roboto-slab);
+    font-weight: normal;
+  }
+
+  .font-preference__space {
+    font-family: var(--font-space-mono);
+    font-weight: bold;
+  }
+
+  .color-preference__default {
+    background-color: var(--default-accent);
+  }
+  .color-preference__blue {
+    background-color: var(--blue-accent);
+  }
+  .color-preference__purple {
+    background-color: var(--purple-accent);
+  }
+
+  .pane__color-preference input[type="radio"]:checked + label {
+    background-image: url(${___CSS_LOADER_URL_REPLACEMENT_2___});
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .pane__color-preference input[type="radio"]:hover + label {
+    background-image: url(${___CSS_LOADER_URL_REPLACEMENT_2___});
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .pane__apply-row {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .pane__apply-preferences {
+    width: 140px;
+    height: 53px;
+    margin-top: 36px;
+    padding: 0;
+    border-radius: 26.5px;
+    background-color: var(--default-accent);
+    font-family: Kumbh Sans;
+    font-weight: bold;
+    font-size: 16px;
+    color: #ffffff;
+    transition: transform 0.15s ease-in-out;
+    cursor: pointer;
+  }
+
+  .pane__apply-preferences:hover {
+    transform: scale(1.1);
+  }
+
+  @media screen and (min-width: 600px) {
+    h1 {
+      font-size: 32px;
+      line-height: 32px;
+      margin-top: 48px;
+    }
+
+    .pomodoro-app {
+      height: 100%;
+    }
+
+    .controls {
+      width: 373px;
+      margin: 55px 0 45px 0;
+    }
+
+    .controls__button {
+      font-size: 14px;
+    }
+
+    .timer {
+      width: 410px;
+      height: 410px;
+    }
+
+    .pane__close-preferences {
+      right: 36px;
+      top: 39px;
+      font-size: 28px;
+    }
+
+    .preferences__pane {
+      top: 267px;
+      width: 540px;
+      height: 490px;
+      border-radius: 25px;
+    }
+
+    .preferences__pane h2 {
+      padding: 34px 0 31px 40px;
+      font-size: 28px;
+      line-height: 28px;
+    }
+
+    .time-settings__form {
+      margin: 24px 40px 24px 40px;
+    }
+
+    .pane__font-preference,
+    .pane__color-preference {
+      margin: 0 40px 0 40px;
+    }
+
+    .pane__time-settings h3 {
+      margin: 24px 40px 22px 40px;
+    }
+
+    .pane__time-settings h3,
+    .pane__font-preference h3,
+    .pane__color-preference h3 {
+      text-align: left;
+      font-size: 13px;
+      line-height: 13px;
+      letter-spacing: 5px;
+    }
+
+    .pane__font-preference h3,
+    .pane__color-preference h3 {
+      width: 300px;
+      margin-top: 18px;
+    }
+
+    .font-preference__kumbh,
+    .font-preference__roboto,
+    .font-preference__space,
+    .color-preference__default,
+    .color-preference__blue,
+    .color-preference__purple {
+      margin: 0 8px 0 8px;
+    }
+
+    .font-preference__space,
+    .color-preference__purple {
+      margin: 0 0 0 8px;
+    }
+
+    .time-settings__form {
+      margin: 18px 40px 24px 40px;
+      display: grid;
+      grid-template-columns: auto auto auto;
+      grid-template-rows: 12px 48px;
+      column-gap: 22px;
+    }
+
+    label {
+      grid-row: 1;
+    }
+
+    input {
+      grid-row: 2;
+    }
+  }
+
+  @media screen and (min-width: 769px) {
+    .preferences__pane {
+      top: 155px;
+    }
+  }
+
+  /* Container principale */
+  .commands {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(236, 234, 246, 0.1); /* Sfondo bianco */ 
+    box-shadow: 0 -2px 10px rgba(71, 43, 211, 0.1); /* Ombra leggera */
+    display: flex;
+    justify-content: space-between; /* Dispone gli elementi a sinistra e destra */
+    border-top: 1px solid var(--accent-color);
+  }
+
+  .commands__button-group {
+    display: flex;
+    align-items: center;
+  }
+
+  .commands__button {
+    color: black; /* Colore nero per i bottoni per contrasto */
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+  }
+
+  .commands__settings-button {
+    margin-left: auto; /* Spinge il bottone settings verso destra */
+  }
+
+  /* Bottone all'interno del gruppo */
+  .btn-group > .btn:last-child {
+    margin-right: 0;
+  }
+
+
+
+}`, "",{"version":3,"sources":["webpack://./public/style/Pomodoro.css"],"names":[],"mappings":"AAKA;EACE,uBAAuB;EACvB,0BAA0B;EAC1B,eAAe;EACf,oBAAoB;EACpB,iCAAiC;EACjC,2BAA2B;EAC3B,2BAA2B;EAC3B,2BAA2B;EAC3B,yBAAyB;EACzB,sBAAsB;EACtB,wBAAwB;;EAExB,wCAAwC;EACxC,wCAAwC;EACxC,wCAAwC;EACxC,0CAA0C;AAC5C;;;AAGA;EACE,uBAAuB;EACvB,UAAU;EACV,gBAAgB;EAChB,kCAAkC;EAClC,aAAa;EACb,sBAAsB;EACtB,mBAAmB;EACnB,gCAAgC;;;EAGhC;IACE,qCAAqC;IACrC,kBAAkB;IAClB,kBAAkB;IAClB,kBAAkB;IAClB,iBAAiB;IACjB,eAAe;IACf,iBAAiB;IACjB,gBAAgB;EAClB;;EAEA;IACE,aAAa;IACb,8BAA8B;IAC9B,mCAAmC;IACnC,qBAAqB;IACrB,YAAY;IACZ,gBAAgB;IAChB,wBAAwB;IACxB,mBAAmB;IACnB,YAAY;EACd;;EAEA,kDAAkD;EAClD,uEAAuE;EACvE;IACE,UAAU;IACV,eAAe;IACf,QAAQ;EACV;;EAEA;IACE,aAAa;IACb,mBAAmB;IACnB,YAAY;IACZ,YAAY;IACZ,qBAAqB;IACrB,mCAAmC;IACnC,sBAAsB;;IAEtB,gCAAgC;IAChC,kBAAkB;IAClB,iBAAiB;IACjB,eAAe;IACf,kBAAkB;IAClB,kBAAkB;IAClB,sBAAsB;IACtB,YAAY;IACZ,eAAe;EACjB;;EAEA;IACE,uBAAuB;IACvB,UAAU;IACV,+BAA+B;IAC/B,oBAAoB;IACpB,kCAAkC;IAClC,yBAAyB;EAC3B;;EAEA;IACE,aAAa;IACb,uBAAuB;IACvB,mBAAmB;IACnB,cAAc;IACd,YAAY;IACZ,aAAa;IACb,kBAAkB;IAClB,yDAA6C;IAC7C,sBAAsB;IACtB,2BAA2B;IAC3B,8DAA8D;IAC9D,eAAe;IACf,WAAW;EACb;;EAEA;IACE,sBAAsB;EACxB;;EAEA;IACE,cAAc;IACd,aAAa;IACb,aAAa;IACb,kBAAkB;IAClB,yDAA6C;IAC7C,sBAAsB;IACtB,2BAA2B;EAC7B;;EAEA;IACE,WAAW;IACX,YAAY;IACZ,SAAS;IACT,6BAA6B;IAC7B,YAAY;IACZ,kCAAkC;IAClC,eAAe;EACjB;;EAEA;IACE,cAAc;EAChB;;EAEA;IACE,UAAU;EACZ;;EAEA;IACE,eAAe;IACf,gCAAgC;IAChC,iBAAiB;IACjB,eAAe;IACf,iBAAiB;IACjB,SAAS;IACT,YAAY;IACZ,iBAAiB;IACjB,oBAAoB;IACpB,mBAAmB,EAAE,4DAA4D;IACjF,sCAAsC;IACtC,eAAe;EACjB;;EAEA;IACE,gBAAgB;IAChB,gBAAgB;IAChB,SAAS;IACT,uCAAuC;IACvC,eAAe;EACjB;;EAEA;IACE,mCAAmC;EACrC;;EAEA;IACE,YAAY;IACZ,eAAe;IACf,aAAa;IACb,OAAO;IACP,MAAM;IACN,WAAW;IACX,YAAY;IACZ,8BAA8B,EAAE,mBAAmB;IACnD,oCAAoC,EAAE,qBAAqB;EAC7D;;EAEA;IACE;MACE,WAAW;IACb;IACA;MACE,aAAa;IACf;EACF;;EAEA;IACE,cAAc;IACd,oBAAoB;IACpB,kCAAkC;IAClC,yBAAyB;EAC3B;;EAEA;IACE,SAAS;IACT,YAAY;IACZ,aAAa;IACb,yCAAyC;IACzC,mBAAmB;;IAEnB,kBAAkB;IAClB,YAAY;IACZ,4EAA4E;IAC5E,iCAAiC;EACnC;;EAEA;IACE,yBAAyB;IACzB,gCAAgC;IAChC,gCAAgC;IAChC,kBAAkB;IAClB,iBAAiB;IACjB,eAAe;IACf,iBAAiB;IACjB,8BAA8B;EAChC;;EAEA;IACE,YAAY;IACZ,gBAAgB;IAChB,kBAAkB;IAClB,WAAW;IACX,SAAS;IACT,6BAA6B;IAC7B,YAAY;IACZ,eAAe;IACf,uCAAuC;EACzC;;EAEA;IACE,sBAAsB;IACtB,eAAe;EACjB;;EAEA;IACE,WAAW;IACX,kBAAkB;IAClB,gCAAgC;IAChC,kBAAkB;IAClB,iBAAiB;IACjB,eAAe;IACf,iBAAiB;IACjB,yBAAyB;IACzB,kBAAkB;IAClB,yBAAyB;IACzB,8BAA8B;EAChC;;EAEA;;IAEE,gBAAgB;EAClB;;EAEA;IACE,2BAA2B;IAC3B,aAAa;IACb,8BAA8B;IAC9B,mBAAmB;IACnB,YAAY;EACd;;EAEA;IACE,gCAAgC;IAChC,kBAAkB;IAClB,iBAAiB;IACjB,eAAe;IACf,iBAAiB;IACjB,uBAAuB;IACvB,sBAAsB;IACtB,YAAY;EACd;;EAEA;IACE,YAAY;IACZ,YAAY;IACZ,kBAAkB;IAClB,YAAY;IACZ,mBAAmB;IACnB,mCAAmC;IACnC,kBAAkB;IAClB,kBAAkB;IAClB,iBAAiB;IACjB,eAAe;IACf,iBAAiB;IACjB,uBAAuB;EACzB;;EAEA;;IAEE,kBAAkB;IAClB,wBAAwB;IACxB;6BACyB;IACzB,YAAY;IACZ,WAAW;IACX,YAAY,EAAE,kDAAkD;IAChE,eAAe;EACjB;;EAEA;;IAEE,UAAU;EACZ;;EAEA,kDAAkD;EAClD,uEAAuE;EACvE;;IAEE,UAAU;IACV,eAAe;IACf,QAAQ;EACV;;EAEA;;IAEE,UAAU;IACV,aAAa;IACb,uBAAuB;IACvB,mBAAmB;IACnB,2EAA2E;IAC3E,eAAe;EACjB;;EAEA;;IAEE,qBAAqB;EACvB;;EAEA;;IAEE,aAAa;IACb,eAAe;IACf,uBAAuB;IACvB,sBAAsB;IACtB,qBAAqB;IACrB,yBAAyB;IACzB,mBAAmB;IACnB,qBAAqB;EACvB;;EAEA;IACE,YAAY;EACd;;EAEA;;;;;;IAME,WAAW;IACX,YAAY;IACZ,sBAAsB;IACtB,YAAY;IACZ,kBAAkB;IAClB,eAAe;EACjB;;EAEA;;;IAGE,mCAAmC;IACnC,uBAAuB;EACzB;;EAEA;IACE,mCAAmC;IACnC,WAAW;EACb;;EAEA;IACE,mCAAmC;IACnC,WAAW;IACX,YAAY;EACd;;EAEA;IACE,gCAAgC;IAChC,iBAAiB;IACjB,gBAAgB;EAClB;;EAEA;IACE,oCAAoC;IACpC,mBAAmB;EACrB;;EAEA;IACE,mCAAmC;IACnC,iBAAiB;EACnB;;EAEA;IACE,uCAAuC;EACzC;EACA;IACE,oCAAoC;EACtC;EACA;IACE,sCAAsC;EACxC;;EAEA;IACE,yDAAgP;IAChP,4BAA4B;IAC5B,2BAA2B;EAC7B;;EAEA;IACE,yDAAgP;IAChP,4BAA4B;IAC5B,2BAA2B;EAC7B;;EAEA;IACE,WAAW;IACX,aAAa;IACb,uBAAuB;EACzB;;EAEA;IACE,YAAY;IACZ,YAAY;IACZ,gBAAgB;IAChB,UAAU;IACV,qBAAqB;IACrB,uCAAuC;IACvC,uBAAuB;IACvB,iBAAiB;IACjB,eAAe;IACf,cAAc;IACd,uCAAuC;IACvC,eAAe;EACjB;;EAEA;IACE,qBAAqB;EACvB;;EAEA;IACE;MACE,eAAe;MACf,iBAAiB;MACjB,gBAAgB;IAClB;;IAEA;MACE,YAAY;IACd;;IAEA;MACE,YAAY;MACZ,qBAAqB;IACvB;;IAEA;MACE,eAAe;IACjB;;IAEA;MACE,YAAY;MACZ,aAAa;IACf;;IAEA;MACE,WAAW;MACX,SAAS;MACT,eAAe;IACjB;;IAEA;MACE,UAAU;MACV,YAAY;MACZ,aAAa;MACb,mBAAmB;IACrB;;IAEA;MACE,yBAAyB;MACzB,eAAe;MACf,iBAAiB;IACnB;;IAEA;MACE,2BAA2B;IAC7B;;IAEA;;MAEE,qBAAqB;IACvB;;IAEA;MACE,2BAA2B;IAC7B;;IAEA;;;MAGE,gBAAgB;MAChB,eAAe;MACf,iBAAiB;MACjB,mBAAmB;IACrB;;IAEA;;MAEE,YAAY;MACZ,gBAAgB;IAClB;;IAEA;;;;;;MAME,mBAAmB;IACrB;;IAEA;;MAEE,iBAAiB;IACnB;;IAEA;MACE,2BAA2B;MAC3B,aAAa;MACb,qCAAqC;MACrC,6BAA6B;MAC7B,gBAAgB;IAClB;;IAEA;MACE,WAAW;IACb;;IAEA;MACE,WAAW;IACb;EACF;;EAEA;IACE;MACE,UAAU;IACZ;EACF;;EAEA,yBAAyB;EACzB;IACE,eAAe;IACf,SAAS;IACT,OAAO;IACP,WAAW;IACX,0CAA0C,EAAE,kBAAkB;IAC9D,8CAA8C,EAAE,kBAAkB;IAClE,aAAa;IACb,8BAA8B,EAAE,6CAA6C;IAC7E,yCAAyC;EAC3C;;EAEA;IACE,aAAa;IACb,mBAAmB;EACrB;;EAEA;IACE,YAAY,EAAE,4CAA4C;IAC1D,YAAY;IACZ,6BAA6B;EAC/B;;EAEA;IACE,iBAAiB,EAAE,4CAA4C;EACjE;;EAEA,mCAAmC;EACnC;IACE,eAAe;EACjB;;;;AAIF","sourcesContent":["@import url(\"https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap\");\n@import url(\"https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap\");\n@import url(\"https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap\");\n\n\n:root {\n  --accent-color: #f87070;\n  --background-body: #ffffff;\n  --text: #000000;\n  --text-dark: #1e213f;\n  --background-preferences: #ffffff;\n  --input-background: #eff1fa;\n  --background-timer: #ffffff;\n  --settings-heading: #161932;\n  --default-accent: #f87070;\n  --blue-accent: #70f3f8;\n  --purple-accent: #d881f8;\n\n  --font-current: \"Kumbh Sans\", sans-serif;\n  --font-default: \"Kumbh Sans\", sans-serif;\n  --font-roboto-slab: \"Roboto Slab\", serif;\n  --font-space-mono: \"Space Mono\", monospace;\n}\n\n\n.pomodoro-app {\n  justify-content: center;\n  padding: 0;\n  margin-top: 10vh;\n  background: var(--background-body);\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  font-family: var(--font-current);\n\n\n  h1 {\n    font-family: \"Kumbh Sans\", sans-serif;\n    color: var(--text);\n    text-align: center;\n    font-style: normal;\n    font-weight: bold;\n    font-size: 24px;\n    line-height: 24px;\n    margin-top: 32px;\n  }\n\n  .controls {\n    display: flex;\n    justify-content: space-between;\n    background: var(--background-timer);\n    border-radius: 31.5px;\n    width: 327px;\n    min-height: 63px;\n    padding: 8px 6px 8px 6px;\n    margin: px 0 48px 0;\n    z-index: 100;\n  }\n\n  /* hide radio inputs so the labels can be styled */\n  /* display: none; will make them unfocusable / no keyboard navigation */\n  .controls input[type=\"radio\"] {\n    opacity: 0;\n    position: fixed;\n    width: 0;\n  }\n\n  .controls__button {\n    display: flex;\n    align-items: center;\n    height: 48px;\n    border: none;\n    border-radius: 26.5px;\n    background: var(--background-timer);\n    padding: 0 15px 0 15px;\n\n    font-family: var(--font-current);\n    font-style: normal;\n    font-weight: bold;\n    font-size: 12px;\n    text-align: center;\n    color: var(--text);\n    mix-blend-mode: normal;\n    opacity: 0.4;\n    cursor: pointer;\n  }\n\n  .controls input[type=\"radio\"]:checked + label {\n    color: var(--text-dark);\n    opacity: 1;\n    background: var(--accent-color);\n    animation-name: fade;\n    animation-timing-function: ease-in;\n    animation-duration: 0.05s;\n  }\n\n  .timer {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    flex-shrink: 0;\n    width: 350px;\n    height: 350px;\n    border-radius: 90%;\n    background-image: url('./lofi-girl-lofi.gif');\n    background-size: cover;\n    background-position: center;\n    box-shadow: -30px -30px 100px #272c5a, 30px 30px 100px #121530;\n    cursor: pointer;\n    color:white;\n  }\n  \n  .timer:active {\n    transform: scale(0.98);\n  }\n  \n  .timer__display {\n    height: 89.26%;\n    width: 89.26%;\n    padding: 11px;\n    border-radius: 90%;\n    background-image: url('./lofi-girl-lofi.gif');\n    background-size: cover;\n    background-position: center;\n  }\n  \n  button.display__mute {\n    width: 35px;\n    height: 35px;\n    border: 0;\n    background-color: transparent;\n    color: white;\n    transition: color 0.3s ease-in-out;\n    cursor: pointer;\n  }\n\n  button.display__mute:hover {\n    color: #d7e0ff;\n  }\n\n  button:focus:not(:focus-visible) {\n    outline: 0;\n  }\n\n  .display__start-pause {\n    margin-top: 50%;\n    font-family: var(--font-default);\n    font-weight: bold;\n    font-size: 16px;\n    background : none;\n    border: 0;\n    color: white;\n    line-height: 16px;\n    letter-spacing: 15px;\n    margin-right: -15px; /* Accounts for extra whitespace letter-spacing introduced */\n    transition: transform 0.2s ease-in-out;\n    cursor: pointer;\n  }\n\n  .pomodoro-app__preferences {\n    margin-top: 79px;\n    background: none;\n    border: 0;\n    transition: transform 0.15s ease-in-out;\n    cursor: pointer;\n  }\n\n  .pomodoro-app__preferences:hover {\n    transform: scale(1.4) rotate(45deg);\n  }\n\n  .preferences {\n    z-index: 200;\n    position: fixed;\n    display: none;\n    left: 0;\n    top: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgb(0, 0, 0); /* Fallback color */\n    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */\n  }\n\n  @keyframes fade {\n    from {\n      opacity: 0%;\n    }\n    to {\n      opacity: 100%;\n    }\n  }\n\n  .preferences--visible {\n    display: block;\n    animation-name: fade;\n    animation-timing-function: ease-in;\n    animation-duration: 0.15s;\n  }\n\n  .preferences__pane {\n    top: 46px;\n    width: 327px;\n    height: 549px;\n    background: var(--background-preferences);\n    border-radius: 15px;\n\n    position: relative;\n    margin: auto;\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n    transition: 3.25s all ease-in-out;\n  }\n\n  .preferences__pane h2 {\n    padding: 24px 0 28px 24px;\n    border-bottom: 1px solid #e3e1e1;\n    font-family: var(--font-default);\n    font-style: normal;\n    font-weight: bold;\n    font-size: 20px;\n    line-height: 20px;\n    color: var(--settings-heading);\n  }\n\n  .pane__close-preferences {\n    border: none;\n    background: none;\n    position: absolute;\n    right: 24px;\n    top: 19px;\n    color: var(--background-body);\n    opacity: 0.5;\n    font-size: 24px;\n    transition: transform 0.15s ease-in-out;\n  }\n\n  .pane__close-preferences:hover {\n    transform: scale(1.65);\n    cursor: pointer;\n  }\n\n  h3 {\n    width: 100%;\n    text-align: center;\n    font-family: var(--font-default);\n    font-style: normal;\n    font-weight: bold;\n    font-size: 11px;\n    line-height: 11px;\n    text-transform: uppercase;\n    text-align: center;\n    letter-spacing: 4.23077px;\n    color: var(--settings-heading);\n  }\n\n  .pane__time-settings,\n  .pane__color-preference {\n    margin-top: 28px;\n  }\n\n  .time-settings__form {\n    margin: 18px 24px 24px 23px;\n    display: grid;\n    grid-template-columns: 50% 50%;\n    align-items: center;\n    row-gap: 8px;\n  }\n\n  label {\n    font-family: var(--font-default);\n    font-style: normal;\n    font-weight: bold;\n    font-size: 12px;\n    line-height: 12px;\n    color: var(--text-dark);\n    mix-blend-mode: normal;\n    opacity: 0.4;\n  }\n\n  input {\n    width: 140px;\n    height: 40px;\n    padding-left: 16px;\n    border: none;\n    border-radius: 10px;\n    background: var(--input-background);\n    font-family: var();\n    font-style: normal;\n    font-weight: bold;\n    font-size: 14px;\n    line-height: 14px;\n    color: var(--text-dark);\n  }\n\n  input[type=\"number\"]::-webkit-outer-spin-button,\n  input[type=\"number\"]::-webkit-inner-spin-button {\n    margin-right: 16px;\n    -webkit-appearance: none;\n    background: url(\"data:image/svg+xml,%3Csvg width='14' height='21' viewBox='0 0 14 21' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 6L7 2L13 6' stroke='%231E213F' stroke-opacity='0.25' stroke-width='2'/%3E%3Cpath d='M1 15L7 19L13 15' stroke='%231E213F' stroke-opacity='0.25' stroke-width='2'/%3E%3C/svg%3E%0A\")\n      no-repeat center center;\n    height: 21px;\n    width: 14px;\n    opacity: 0.5; /* shows Spin Buttons per default (Chrome >= 39) */\n    cursor: pointer;\n  }\n\n  input[type=\"number\"]::-webkit-inner-spin-button:hover,\n  input[type=\"number\"]::-webkit-inner-spin-button:active {\n    opacity: 1;\n  }\n\n  /* hide radio inputs so the labels can be styled */\n  /* display: none; will make them unfocusable / no keyboard navigation */\n  .pane__color-preference input[type=\"radio\"],\n  .pane__font-preference input[type=\"radio\"] {\n    opacity: 0;\n    position: fixed;\n    width: 0;\n  }\n\n  .pane__color-preference input[type=\"radio\"] + label,\n  .pane__font-preference input[type=\"radio\"] + label {\n    opacity: 1;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    transition: transform 0.25s ease-in-out, background-color 0.25s ease-in-out;\n    cursor: pointer;\n  }\n\n  .pane__color-preference input[type=\"radio\"] + label:hover,\n  .pane__font-preference input[type=\"radio\"] + label:hover {\n    transform: scale(1.1);\n  }\n\n  .pane__font-preference,\n  .pane__color-preference {\n    display: flex;\n    flex-wrap: wrap;\n    justify-content: center;\n    padding: 24px 0 24px 0;\n    margin: 0 24px 0 24px;\n    border-width: 1px 0 1px 0;\n    border-style: solid;\n    border-color: #e3e1e1;\n  }\n\n  .pane__color-preference {\n    border: none;\n  }\n\n  .font-preference__kumbh,\n  .font-preference__roboto,\n  .font-preference__space,\n  .color-preference__default,\n  .color-preference__blue,\n  .color-preference__purple {\n    width: 40px;\n    height: 40px;\n    margin: 18px 8px 0 8px;\n    border: none;\n    border-radius: 90%;\n    font-size: 15px;\n  }\n\n  .font-preference__kumbh,\n  .font-preference__roboto,\n  .font-preference__space {\n    background: var(--input-background);\n    color: var(--text-dark);\n  }\n\n  .pane__font-preference input[type=\"radio\"]:checked + label {\n    background: var(--settings-heading);\n    color: #fff;\n  }\n\n  .pane__font-preference input[type=\"radio\"]:hover + label {\n    background: var(--settings-heading);\n    color: #fff;\n    opacity: 0.9;\n  }\n\n  .font-preference__kumbh {\n    font-family: var(--font-default);\n    font-weight: bold;\n    padding-top: 5px;\n  }\n\n  .font-preference__roboto {\n    font-family: var(--font-roboto-slab);\n    font-weight: normal;\n  }\n\n  .font-preference__space {\n    font-family: var(--font-space-mono);\n    font-weight: bold;\n  }\n\n  .color-preference__default {\n    background-color: var(--default-accent);\n  }\n  .color-preference__blue {\n    background-color: var(--blue-accent);\n  }\n  .color-preference__purple {\n    background-color: var(--purple-accent);\n  }\n\n  .pane__color-preference input[type=\"radio\"]:checked + label {\n    background-image: url(\"data:image/svg+xml,%3Csvg width='15' height='11' viewBox='0 0 15 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 5.5L4.95263 9.45263L13.4053 1' stroke='%23161932' stroke-width='2'/%3E%3C/svg%3E%0A\");\n    background-repeat: no-repeat;\n    background-position: center;\n  }\n\n  .pane__color-preference input[type=\"radio\"]:hover + label {\n    background-image: url(\"data:image/svg+xml,%3Csvg width='15' height='11' viewBox='0 0 15 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 5.5L4.95263 9.45263L13.4053 1' stroke='%23161932' stroke-width='2'/%3E%3C/svg%3E%0A\");\n    background-repeat: no-repeat;\n    background-position: center;\n  }\n\n  .pane__apply-row {\n    width: 100%;\n    display: flex;\n    justify-content: center;\n  }\n\n  .pane__apply-preferences {\n    width: 140px;\n    height: 53px;\n    margin-top: 36px;\n    padding: 0;\n    border-radius: 26.5px;\n    background-color: var(--default-accent);\n    font-family: Kumbh Sans;\n    font-weight: bold;\n    font-size: 16px;\n    color: #ffffff;\n    transition: transform 0.15s ease-in-out;\n    cursor: pointer;\n  }\n\n  .pane__apply-preferences:hover {\n    transform: scale(1.1);\n  }\n\n  @media screen and (min-width: 600px) {\n    h1 {\n      font-size: 32px;\n      line-height: 32px;\n      margin-top: 48px;\n    }\n\n    .pomodoro-app {\n      height: 100%;\n    }\n\n    .controls {\n      width: 373px;\n      margin: 55px 0 45px 0;\n    }\n\n    .controls__button {\n      font-size: 14px;\n    }\n\n    .timer {\n      width: 410px;\n      height: 410px;\n    }\n\n    .pane__close-preferences {\n      right: 36px;\n      top: 39px;\n      font-size: 28px;\n    }\n\n    .preferences__pane {\n      top: 267px;\n      width: 540px;\n      height: 490px;\n      border-radius: 25px;\n    }\n\n    .preferences__pane h2 {\n      padding: 34px 0 31px 40px;\n      font-size: 28px;\n      line-height: 28px;\n    }\n\n    .time-settings__form {\n      margin: 24px 40px 24px 40px;\n    }\n\n    .pane__font-preference,\n    .pane__color-preference {\n      margin: 0 40px 0 40px;\n    }\n\n    .pane__time-settings h3 {\n      margin: 24px 40px 22px 40px;\n    }\n\n    .pane__time-settings h3,\n    .pane__font-preference h3,\n    .pane__color-preference h3 {\n      text-align: left;\n      font-size: 13px;\n      line-height: 13px;\n      letter-spacing: 5px;\n    }\n\n    .pane__font-preference h3,\n    .pane__color-preference h3 {\n      width: 300px;\n      margin-top: 18px;\n    }\n\n    .font-preference__kumbh,\n    .font-preference__roboto,\n    .font-preference__space,\n    .color-preference__default,\n    .color-preference__blue,\n    .color-preference__purple {\n      margin: 0 8px 0 8px;\n    }\n\n    .font-preference__space,\n    .color-preference__purple {\n      margin: 0 0 0 8px;\n    }\n\n    .time-settings__form {\n      margin: 18px 40px 24px 40px;\n      display: grid;\n      grid-template-columns: auto auto auto;\n      grid-template-rows: 12px 48px;\n      column-gap: 22px;\n    }\n\n    label {\n      grid-row: 1;\n    }\n\n    input {\n      grid-row: 2;\n    }\n  }\n\n  @media screen and (min-width: 769px) {\n    .preferences__pane {\n      top: 155px;\n    }\n  }\n\n  /* Container principale */\n  .commands {\n    position: fixed;\n    bottom: 0;\n    left: 0;\n    width: 100%;\n    background-color: rgba(236, 234, 246, 0.1); /* Sfondo bianco */ \n    box-shadow: 0 -2px 10px rgba(71, 43, 211, 0.1); /* Ombra leggera */\n    display: flex;\n    justify-content: space-between; /* Dispone gli elementi a sinistra e destra */\n    border-top: 1px solid var(--accent-color);\n  }\n\n  .commands__button-group {\n    display: flex;\n    align-items: center;\n  }\n\n  .commands__button {\n    color: black; /* Colore nero per i bottoni per contrasto */\n    opacity: 0.8;\n    transition: opacity 0.3s ease;\n  }\n\n  .commands__settings-button {\n    margin-left: auto; /* Spinge il bottone settings verso destra */\n  }\n\n  /* Bottone all'interno del gruppo */\n  .btn-group > .btn:last-child {\n    margin-right: 0;\n  }\n\n\n\n}"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/runtime/api.js":
 /*!*****************************************************!*\
   !*** ./node_modules/css-loader/dist/runtime/api.js ***!
   \*****************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 
 /*
@@ -6497,12 +8147,49 @@ module.exports = function (cssWithMappingToString) {
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/runtime/getUrl.js":
+/*!********************************************************!*\
+  !*** ./node_modules/css-loader/dist/runtime/getUrl.js ***!
+  \********************************************************/
+/***/ ((module) => {
+
+"use strict";
+
+
+module.exports = function (url, options) {
+  if (!options) {
+    options = {};
+  }
+  if (!url) {
+    return url;
+  }
+  url = String(url.__esModule ? url.default : url);
+
+  // If url is already wrapped in quotes, remove them
+  if (/^['"].*['"]$/.test(url)) {
+    url = url.slice(1, -1);
+  }
+  if (options.hash) {
+    url += options.hash;
+  }
+
+  // Should url be wrapped?
+  // See https://drafts.csswg.org/css-values-3/#urls
+  if (/["'() \t\n]|(%20)/.test(url) || options.needQuotes) {
+    return "\"".concat(url.replace(/"/g, '\\"').replace(/\n/g, "\\n"), "\"");
+  }
+  return url;
+};
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/runtime/sourceMaps.js":
 /*!************************************************************!*\
   !*** ./node_modules/css-loader/dist/runtime/sourceMaps.js ***!
   \************************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 
 module.exports = function (item) {
@@ -6522,12 +8209,502 @@ module.exports = function (item) {
 
 /***/ }),
 
+/***/ "./public/sounds/pauseTimer.mp3":
+/*!**************************************!*\
+  !*** ./public/sounds/pauseTimer.mp3 ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + "sounds/pauseTimer.d73c474578244c6a1b9f2d2d7bc187d6.mp3");
+
+/***/ }),
+
+/***/ "./public/sounds/slide.mp3":
+/*!*********************************!*\
+  !*** ./public/sounds/slide.mp3 ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + "sounds/slide.3c8db537f53afb33abba5b586046ad7d.mp3");
+
+/***/ }),
+
+/***/ "./public/sounds/startTimer.mp3":
+/*!**************************************!*\
+  !*** ./public/sounds/startTimer.mp3 ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + "sounds/startTimer.2968a7452038c15f4208ca503b49a0d2.mp3");
+
+/***/ }),
+
+/***/ "./public/sounds/timesUp.mp3":
+/*!***********************************!*\
+  !*** ./public/sounds/timesUp.mp3 ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + "sounds/timesUp.0cbb5adfa4ca49bb47c65247366fd4d7.mp3");
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/Button.js":
+/*!****************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/Button.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _restart_ui_Button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @restart/ui/Button */ "./node_modules/@restart/ui/esm/Button.js");
+/* harmony import */ var _ThemeProvider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ThemeProvider */ "./node_modules/react-bootstrap/esm/ThemeProvider.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+"use client";
+
+
+
+
+
+
+const Button = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(({
+  as,
+  bsPrefix,
+  variant = 'primary',
+  size,
+  active = false,
+  disabled = false,
+  className,
+  ...props
+}, ref) => {
+  const prefix = (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_3__.useBootstrapPrefix)(bsPrefix, 'btn');
+  const [buttonProps, {
+    tagName
+  }] = (0,_restart_ui_Button__WEBPACK_IMPORTED_MODULE_4__.useButtonProps)({
+    tagName: as,
+    disabled,
+    ...props
+  });
+  const Component = tagName;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Component, {
+    ...buttonProps,
+    ...props,
+    ref: ref,
+    disabled: disabled,
+    className: classnames__WEBPACK_IMPORTED_MODULE_0___default()(className, prefix, active && 'active', variant && `${prefix}-${variant}`, size && `${prefix}-${size}`, props.href && disabled && 'disabled')
+  });
+});
+Button.displayName = 'Button';
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Button);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/ButtonGroup.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/ButtonGroup.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _ThemeProvider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ThemeProvider */ "./node_modules/react-bootstrap/esm/ThemeProvider.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+"use client";
+
+
+
+
+
+const ButtonGroup = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(({
+  bsPrefix,
+  size,
+  vertical = false,
+  className,
+  role = 'group',
+  // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+  as: Component = 'div',
+  ...rest
+}, ref) => {
+  const prefix = (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_3__.useBootstrapPrefix)(bsPrefix, 'btn-group');
+  let baseClass = prefix;
+  if (vertical) baseClass = `${prefix}-vertical`;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Component, {
+    ...rest,
+    ref: ref,
+    role: role,
+    className: classnames__WEBPACK_IMPORTED_MODULE_0___default()(className, baseClass, size && `${prefix}-${size}`)
+  });
+});
+ButtonGroup.displayName = 'ButtonGroup';
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ButtonGroup);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/ThemeProvider.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/ThemeProvider.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   DEFAULT_BREAKPOINTS: () => (/* binding */ DEFAULT_BREAKPOINTS),
+/* harmony export */   DEFAULT_MIN_BREAKPOINT: () => (/* binding */ DEFAULT_MIN_BREAKPOINT),
+/* harmony export */   ThemeConsumer: () => (/* binding */ Consumer),
+/* harmony export */   createBootstrapComponent: () => (/* binding */ createBootstrapComponent),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   useBootstrapBreakpoints: () => (/* binding */ useBootstrapBreakpoints),
+/* harmony export */   useBootstrapMinBreakpoint: () => (/* binding */ useBootstrapMinBreakpoint),
+/* harmony export */   useBootstrapPrefix: () => (/* binding */ useBootstrapPrefix),
+/* harmony export */   useIsRTL: () => (/* binding */ useIsRTL)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+"use client";
+
+
+
+
+const DEFAULT_BREAKPOINTS = ['xxl', 'xl', 'lg', 'md', 'sm', 'xs'];
+const DEFAULT_MIN_BREAKPOINT = 'xs';
+const ThemeContext = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createContext({
+  prefixes: {},
+  breakpoints: DEFAULT_BREAKPOINTS,
+  minBreakpoint: DEFAULT_MIN_BREAKPOINT
+});
+const {
+  Consumer,
+  Provider
+} = ThemeContext;
+function ThemeProvider({
+  prefixes = {},
+  breakpoints = DEFAULT_BREAKPOINTS,
+  minBreakpoint = DEFAULT_MIN_BREAKPOINT,
+  dir,
+  children
+}) {
+  const contextValue = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => ({
+    prefixes: {
+      ...prefixes
+    },
+    breakpoints,
+    minBreakpoint,
+    dir
+  }), [prefixes, breakpoints, minBreakpoint, dir]);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(Provider, {
+    value: contextValue,
+    children: children
+  });
+}
+function useBootstrapPrefix(prefix, defaultPrefix) {
+  const {
+    prefixes
+  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(ThemeContext);
+  return prefix || prefixes[defaultPrefix] || defaultPrefix;
+}
+function useBootstrapBreakpoints() {
+  const {
+    breakpoints
+  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(ThemeContext);
+  return breakpoints;
+}
+function useBootstrapMinBreakpoint() {
+  const {
+    minBreakpoint
+  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(ThemeContext);
+  return minBreakpoint;
+}
+function useIsRTL() {
+  const {
+    dir
+  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(ThemeContext);
+  return dir === 'rtl';
+}
+function createBootstrapComponent(Component, opts) {
+  if (typeof opts === 'string') opts = {
+    prefix: opts
+  };
+  const isClassy = Component.prototype && Component.prototype.isReactComponent;
+  // If it's a functional component make sure we don't break it with a ref
+  const {
+    prefix,
+    forwardRefAs = isClassy ? 'ref' : 'innerRef'
+  } = opts;
+  const Wrapped = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(({
+    ...props
+  }, ref) => {
+    props[forwardRefAs] = ref;
+    const bsPrefix = useBootstrapPrefix(props.bsPrefix, prefix);
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(Component, {
+      ...props,
+      bsPrefix: bsPrefix
+    });
+  });
+  Wrapped.displayName = `Bootstrap(${Component.displayName || Component.name})`;
+  return Wrapped;
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ThemeProvider);
+
+/***/ }),
+
+/***/ "./node_modules/react-circular-progressbar/dist/index.esm.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/react-circular-progressbar/dist/index.esm.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   CircularProgressbar: () => (/* binding */ CircularProgressbar),
+/* harmony export */   CircularProgressbarWithChildren: () => (/* binding */ CircularProgressbarWithChildren),
+/* harmony export */   buildStyles: () => (/* binding */ buildStyles)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation. All rights reserved.
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+this file except in compliance with the License. You may obtain a copy of the
+License at http://www.apache.org/licenses/LICENSE-2.0
+
+THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
+WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
+MERCHANTABLITY OR NON-INFRINGEMENT.
+
+See the Apache Version 2.0 License for specific language governing permissions
+and limitations under the License.
+***************************************************************************** */
+/* global Reflect, Promise */
+
+var extendStatics = function(d, b) {
+    extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return extendStatics(d, b);
+};
+
+function __extends(d, b) {
+    extendStatics(d, b);
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+}
+
+var __assign = function() {
+    __assign = Object.assign || function __assign(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+
+function __rest(s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) if (e.indexOf(p[i]) < 0)
+            t[p[i]] = s[p[i]];
+    return t;
+}
+
+var VIEWBOX_WIDTH = 100;
+var VIEWBOX_HEIGHT = 100;
+var VIEWBOX_HEIGHT_HALF = 50;
+var VIEWBOX_CENTER_X = 50;
+var VIEWBOX_CENTER_Y = 50;
+
+function Path(_a) {
+    var className = _a.className, counterClockwise = _a.counterClockwise, dashRatio = _a.dashRatio, pathRadius = _a.pathRadius, strokeWidth = _a.strokeWidth, style = _a.style;
+    return ((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", { className: className, style: Object.assign({}, style, getDashStyle({ pathRadius: pathRadius, dashRatio: dashRatio, counterClockwise: counterClockwise })), d: getPathDescription({
+            pathRadius: pathRadius,
+            counterClockwise: counterClockwise,
+        }), strokeWidth: strokeWidth, fillOpacity: 0 }));
+}
+function getPathDescription(_a) {
+    var pathRadius = _a.pathRadius, counterClockwise = _a.counterClockwise;
+    var radius = pathRadius;
+    var rotation = counterClockwise ? 1 : 0;
+    return "\n      M " + VIEWBOX_CENTER_X + "," + VIEWBOX_CENTER_Y + "\n      m 0,-" + radius + "\n      a " + radius + "," + radius + " " + rotation + " 1 1 0," + 2 * radius + "\n      a " + radius + "," + radius + " " + rotation + " 1 1 0,-" + 2 * radius + "\n    ";
+}
+function getDashStyle(_a) {
+    var counterClockwise = _a.counterClockwise, dashRatio = _a.dashRatio, pathRadius = _a.pathRadius;
+    var diameter = Math.PI * 2 * pathRadius;
+    var gapLength = (1 - dashRatio) * diameter;
+    return {
+        strokeDasharray: diameter + "px " + diameter + "px",
+        strokeDashoffset: (counterClockwise ? -gapLength : gapLength) + "px",
+    };
+}
+
+var CircularProgressbar = (function (_super) {
+    __extends(CircularProgressbar, _super);
+    function CircularProgressbar() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    CircularProgressbar.prototype.getBackgroundPadding = function () {
+        if (!this.props.background) {
+            return 0;
+        }
+        return this.props.backgroundPadding;
+    };
+    CircularProgressbar.prototype.getPathRadius = function () {
+        return VIEWBOX_HEIGHT_HALF - this.props.strokeWidth / 2 - this.getBackgroundPadding();
+    };
+    CircularProgressbar.prototype.getPathRatio = function () {
+        var _a = this.props, value = _a.value, minValue = _a.minValue, maxValue = _a.maxValue;
+        var boundedValue = Math.min(Math.max(value, minValue), maxValue);
+        return (boundedValue - minValue) / (maxValue - minValue);
+    };
+    CircularProgressbar.prototype.render = function () {
+        var _a = this.props, circleRatio = _a.circleRatio, className = _a.className, classes = _a.classes, counterClockwise = _a.counterClockwise, styles = _a.styles, strokeWidth = _a.strokeWidth, text = _a.text;
+        var pathRadius = this.getPathRadius();
+        var pathRatio = this.getPathRatio();
+        return ((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", { className: classes.root + " " + className, style: styles.root, viewBox: "0 0 " + VIEWBOX_WIDTH + " " + VIEWBOX_HEIGHT, "data-test-id": "CircularProgressbar" },
+            this.props.background ? ((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("circle", { className: classes.background, style: styles.background, cx: VIEWBOX_CENTER_X, cy: VIEWBOX_CENTER_Y, r: VIEWBOX_HEIGHT_HALF })) : null,
+            (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Path, { className: classes.trail, counterClockwise: counterClockwise, dashRatio: circleRatio, pathRadius: pathRadius, strokeWidth: strokeWidth, style: styles.trail }),
+            (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Path, { className: classes.path, counterClockwise: counterClockwise, dashRatio: pathRatio * circleRatio, pathRadius: pathRadius, strokeWidth: strokeWidth, style: styles.path }),
+            text ? ((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("text", { className: classes.text, style: styles.text, x: VIEWBOX_CENTER_X, y: VIEWBOX_CENTER_Y }, text)) : null));
+    };
+    CircularProgressbar.defaultProps = {
+        background: false,
+        backgroundPadding: 0,
+        circleRatio: 1,
+        classes: {
+            root: 'CircularProgressbar',
+            trail: 'CircularProgressbar-trail',
+            path: 'CircularProgressbar-path',
+            text: 'CircularProgressbar-text',
+            background: 'CircularProgressbar-background',
+        },
+        counterClockwise: false,
+        className: '',
+        maxValue: 100,
+        minValue: 0,
+        strokeWidth: 8,
+        styles: {
+            root: {},
+            trail: {},
+            path: {},
+            text: {},
+            background: {},
+        },
+        text: '',
+    };
+    return CircularProgressbar;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component));
+
+function CircularProgressbarWithChildren(props) {
+    var children = props.children, circularProgressbarProps = __rest(props, ["children"]);
+    return ((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", { "data-test-id": "CircularProgressbarWithChildren" },
+        (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", { style: { position: 'relative', width: '100%', height: '100%' } },
+            (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(CircularProgressbar, __assign({}, circularProgressbarProps)),
+            props.children ? ((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", { "data-test-id": "CircularProgressbarWithChildren__children", style: {
+                    position: 'absolute',
+                    width: '100%',
+                    height: '100%',
+                    marginTop: '-100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                } }, props.children)) : null)));
+}
+
+function buildStyles(_a) {
+    var rotation = _a.rotation, strokeLinecap = _a.strokeLinecap, textColor = _a.textColor, textSize = _a.textSize, pathColor = _a.pathColor, pathTransition = _a.pathTransition, pathTransitionDuration = _a.pathTransitionDuration, trailColor = _a.trailColor, backgroundColor = _a.backgroundColor;
+    var rotationTransform = rotation == null ? undefined : "rotate(" + rotation + "turn)";
+    var rotationTransformOrigin = rotation == null ? undefined : 'center center';
+    return {
+        root: {},
+        path: removeUndefinedValues({
+            stroke: pathColor,
+            strokeLinecap: strokeLinecap,
+            transform: rotationTransform,
+            transformOrigin: rotationTransformOrigin,
+            transition: pathTransition,
+            transitionDuration: pathTransitionDuration == null ? undefined : pathTransitionDuration + "s",
+        }),
+        trail: removeUndefinedValues({
+            stroke: trailColor,
+            strokeLinecap: strokeLinecap,
+            transform: rotationTransform,
+            transformOrigin: rotationTransformOrigin,
+        }),
+        text: removeUndefinedValues({
+            fill: textColor,
+            fontSize: textSize,
+        }),
+        background: removeUndefinedValues({
+            fill: backgroundColor,
+        }),
+    };
+}
+function removeUndefinedValues(obj) {
+    Object.keys(obj).forEach(function (key) {
+        if (obj[key] == null) {
+            delete obj[key];
+        }
+    });
+    return obj;
+}
+
+
+//# sourceMappingURL=index.esm.js.map
+
+
+/***/ }),
+
 /***/ "./node_modules/react-dom/cjs/react-dom.development.js":
 /*!*************************************************************!*\
   !*** ./node_modules/react-dom/cjs/react-dom.development.js ***!
   \*************************************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 /**
  * @license React
  * react-dom.development.js
@@ -36456,6 +38633,7 @@ if (
   \******************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 
 var m = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
@@ -36488,6 +38666,7 @@ if (false) {} else {
   \*****************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 
 function checkDCE() {
@@ -36531,6 +38710,7 @@ if (false) {} else {
   \*****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 var react_dom__WEBPACK_IMPORTED_MODULE_1___namespace_cache;
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -38076,6 +40256,7 @@ function useViewTransitionState(to, opts) {
   \*************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   AbortedDeferredError: () => (/* reexport safe */ _remix_run_router__WEBPACK_IMPORTED_MODULE_1__.AbortedDeferredError),
@@ -39608,12 +41789,1357 @@ function createMemoryRouter(routes, opts) {
 
 /***/ }),
 
+/***/ "./node_modules/react/cjs/react-jsx-runtime.development.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/react/cjs/react-jsx-runtime.development.js ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+/**
+ * @license React
+ * react-jsx-runtime.development.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+if (true) {
+  (function() {
+'use strict';
+
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+// ATTENTION
+// When adding new symbols to this file,
+// Please consider also adding to 'react-devtools-shared/src/backend/ReactSymbols'
+// The Symbol used to tag the ReactElement-like types.
+var REACT_ELEMENT_TYPE = Symbol.for('react.element');
+var REACT_PORTAL_TYPE = Symbol.for('react.portal');
+var REACT_FRAGMENT_TYPE = Symbol.for('react.fragment');
+var REACT_STRICT_MODE_TYPE = Symbol.for('react.strict_mode');
+var REACT_PROFILER_TYPE = Symbol.for('react.profiler');
+var REACT_PROVIDER_TYPE = Symbol.for('react.provider');
+var REACT_CONTEXT_TYPE = Symbol.for('react.context');
+var REACT_FORWARD_REF_TYPE = Symbol.for('react.forward_ref');
+var REACT_SUSPENSE_TYPE = Symbol.for('react.suspense');
+var REACT_SUSPENSE_LIST_TYPE = Symbol.for('react.suspense_list');
+var REACT_MEMO_TYPE = Symbol.for('react.memo');
+var REACT_LAZY_TYPE = Symbol.for('react.lazy');
+var REACT_OFFSCREEN_TYPE = Symbol.for('react.offscreen');
+var MAYBE_ITERATOR_SYMBOL = Symbol.iterator;
+var FAUX_ITERATOR_SYMBOL = '@@iterator';
+function getIteratorFn(maybeIterable) {
+  if (maybeIterable === null || typeof maybeIterable !== 'object') {
+    return null;
+  }
+
+  var maybeIterator = MAYBE_ITERATOR_SYMBOL && maybeIterable[MAYBE_ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL];
+
+  if (typeof maybeIterator === 'function') {
+    return maybeIterator;
+  }
+
+  return null;
+}
+
+var ReactSharedInternals = React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+
+function error(format) {
+  {
+    {
+      for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+        args[_key2 - 1] = arguments[_key2];
+      }
+
+      printWarning('error', format, args);
+    }
+  }
+}
+
+function printWarning(level, format, args) {
+  // When changing this logic, you might want to also
+  // update consoleWithStackDev.www.js as well.
+  {
+    var ReactDebugCurrentFrame = ReactSharedInternals.ReactDebugCurrentFrame;
+    var stack = ReactDebugCurrentFrame.getStackAddendum();
+
+    if (stack !== '') {
+      format += '%s';
+      args = args.concat([stack]);
+    } // eslint-disable-next-line react-internal/safe-string-coercion
+
+
+    var argsWithFormat = args.map(function (item) {
+      return String(item);
+    }); // Careful: RN currently depends on this prefix
+
+    argsWithFormat.unshift('Warning: ' + format); // We intentionally don't use spread (or .apply) directly because it
+    // breaks IE9: https://github.com/facebook/react/issues/13610
+    // eslint-disable-next-line react-internal/no-production-logging
+
+    Function.prototype.apply.call(console[level], console, argsWithFormat);
+  }
+}
+
+// -----------------------------------------------------------------------------
+
+var enableScopeAPI = false; // Experimental Create Event Handle API.
+var enableCacheElement = false;
+var enableTransitionTracing = false; // No known bugs, but needs performance testing
+
+var enableLegacyHidden = false; // Enables unstable_avoidThisFallback feature in Fiber
+// stuff. Intended to enable React core members to more easily debug scheduling
+// issues in DEV builds.
+
+var enableDebugTracing = false; // Track which Fiber(s) schedule render work.
+
+var REACT_MODULE_REFERENCE;
+
+{
+  REACT_MODULE_REFERENCE = Symbol.for('react.module.reference');
+}
+
+function isValidElementType(type) {
+  if (typeof type === 'string' || typeof type === 'function') {
+    return true;
+  } // Note: typeof might be other than 'symbol' or 'number' (e.g. if it's a polyfill).
+
+
+  if (type === REACT_FRAGMENT_TYPE || type === REACT_PROFILER_TYPE || enableDebugTracing  || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || enableLegacyHidden  || type === REACT_OFFSCREEN_TYPE || enableScopeAPI  || enableCacheElement  || enableTransitionTracing ) {
+    return true;
+  }
+
+  if (typeof type === 'object' && type !== null) {
+    if (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || // This needs to include all possible module reference object
+    // types supported by any Flight configuration anywhere since
+    // we don't know which Flight build this will end up being used
+    // with.
+    type.$$typeof === REACT_MODULE_REFERENCE || type.getModuleId !== undefined) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+function getWrappedName(outerType, innerType, wrapperName) {
+  var displayName = outerType.displayName;
+
+  if (displayName) {
+    return displayName;
+  }
+
+  var functionName = innerType.displayName || innerType.name || '';
+  return functionName !== '' ? wrapperName + "(" + functionName + ")" : wrapperName;
+} // Keep in sync with react-reconciler/getComponentNameFromFiber
+
+
+function getContextName(type) {
+  return type.displayName || 'Context';
+} // Note that the reconciler package should generally prefer to use getComponentNameFromFiber() instead.
+
+
+function getComponentNameFromType(type) {
+  if (type == null) {
+    // Host root, text node or just invalid type.
+    return null;
+  }
+
+  {
+    if (typeof type.tag === 'number') {
+      error('Received an unexpected object in getComponentNameFromType(). ' + 'This is likely a bug in React. Please file an issue.');
+    }
+  }
+
+  if (typeof type === 'function') {
+    return type.displayName || type.name || null;
+  }
+
+  if (typeof type === 'string') {
+    return type;
+  }
+
+  switch (type) {
+    case REACT_FRAGMENT_TYPE:
+      return 'Fragment';
+
+    case REACT_PORTAL_TYPE:
+      return 'Portal';
+
+    case REACT_PROFILER_TYPE:
+      return 'Profiler';
+
+    case REACT_STRICT_MODE_TYPE:
+      return 'StrictMode';
+
+    case REACT_SUSPENSE_TYPE:
+      return 'Suspense';
+
+    case REACT_SUSPENSE_LIST_TYPE:
+      return 'SuspenseList';
+
+  }
+
+  if (typeof type === 'object') {
+    switch (type.$$typeof) {
+      case REACT_CONTEXT_TYPE:
+        var context = type;
+        return getContextName(context) + '.Consumer';
+
+      case REACT_PROVIDER_TYPE:
+        var provider = type;
+        return getContextName(provider._context) + '.Provider';
+
+      case REACT_FORWARD_REF_TYPE:
+        return getWrappedName(type, type.render, 'ForwardRef');
+
+      case REACT_MEMO_TYPE:
+        var outerName = type.displayName || null;
+
+        if (outerName !== null) {
+          return outerName;
+        }
+
+        return getComponentNameFromType(type.type) || 'Memo';
+
+      case REACT_LAZY_TYPE:
+        {
+          var lazyComponent = type;
+          var payload = lazyComponent._payload;
+          var init = lazyComponent._init;
+
+          try {
+            return getComponentNameFromType(init(payload));
+          } catch (x) {
+            return null;
+          }
+        }
+
+      // eslint-disable-next-line no-fallthrough
+    }
+  }
+
+  return null;
+}
+
+var assign = Object.assign;
+
+// Helpers to patch console.logs to avoid logging during side-effect free
+// replaying on render function. This currently only patches the object
+// lazily which won't cover if the log function was extracted eagerly.
+// We could also eagerly patch the method.
+var disabledDepth = 0;
+var prevLog;
+var prevInfo;
+var prevWarn;
+var prevError;
+var prevGroup;
+var prevGroupCollapsed;
+var prevGroupEnd;
+
+function disabledLog() {}
+
+disabledLog.__reactDisabledLog = true;
+function disableLogs() {
+  {
+    if (disabledDepth === 0) {
+      /* eslint-disable react-internal/no-production-logging */
+      prevLog = console.log;
+      prevInfo = console.info;
+      prevWarn = console.warn;
+      prevError = console.error;
+      prevGroup = console.group;
+      prevGroupCollapsed = console.groupCollapsed;
+      prevGroupEnd = console.groupEnd; // https://github.com/facebook/react/issues/19099
+
+      var props = {
+        configurable: true,
+        enumerable: true,
+        value: disabledLog,
+        writable: true
+      }; // $FlowFixMe Flow thinks console is immutable.
+
+      Object.defineProperties(console, {
+        info: props,
+        log: props,
+        warn: props,
+        error: props,
+        group: props,
+        groupCollapsed: props,
+        groupEnd: props
+      });
+      /* eslint-enable react-internal/no-production-logging */
+    }
+
+    disabledDepth++;
+  }
+}
+function reenableLogs() {
+  {
+    disabledDepth--;
+
+    if (disabledDepth === 0) {
+      /* eslint-disable react-internal/no-production-logging */
+      var props = {
+        configurable: true,
+        enumerable: true,
+        writable: true
+      }; // $FlowFixMe Flow thinks console is immutable.
+
+      Object.defineProperties(console, {
+        log: assign({}, props, {
+          value: prevLog
+        }),
+        info: assign({}, props, {
+          value: prevInfo
+        }),
+        warn: assign({}, props, {
+          value: prevWarn
+        }),
+        error: assign({}, props, {
+          value: prevError
+        }),
+        group: assign({}, props, {
+          value: prevGroup
+        }),
+        groupCollapsed: assign({}, props, {
+          value: prevGroupCollapsed
+        }),
+        groupEnd: assign({}, props, {
+          value: prevGroupEnd
+        })
+      });
+      /* eslint-enable react-internal/no-production-logging */
+    }
+
+    if (disabledDepth < 0) {
+      error('disabledDepth fell below zero. ' + 'This is a bug in React. Please file an issue.');
+    }
+  }
+}
+
+var ReactCurrentDispatcher = ReactSharedInternals.ReactCurrentDispatcher;
+var prefix;
+function describeBuiltInComponentFrame(name, source, ownerFn) {
+  {
+    if (prefix === undefined) {
+      // Extract the VM specific prefix used by each line.
+      try {
+        throw Error();
+      } catch (x) {
+        var match = x.stack.trim().match(/\n( *(at )?)/);
+        prefix = match && match[1] || '';
+      }
+    } // We use the prefix to ensure our stacks line up with native stack frames.
+
+
+    return '\n' + prefix + name;
+  }
+}
+var reentry = false;
+var componentFrameCache;
+
+{
+  var PossiblyWeakMap = typeof WeakMap === 'function' ? WeakMap : Map;
+  componentFrameCache = new PossiblyWeakMap();
+}
+
+function describeNativeComponentFrame(fn, construct) {
+  // If something asked for a stack inside a fake render, it should get ignored.
+  if ( !fn || reentry) {
+    return '';
+  }
+
+  {
+    var frame = componentFrameCache.get(fn);
+
+    if (frame !== undefined) {
+      return frame;
+    }
+  }
+
+  var control;
+  reentry = true;
+  var previousPrepareStackTrace = Error.prepareStackTrace; // $FlowFixMe It does accept undefined.
+
+  Error.prepareStackTrace = undefined;
+  var previousDispatcher;
+
+  {
+    previousDispatcher = ReactCurrentDispatcher.current; // Set the dispatcher in DEV because this might be call in the render function
+    // for warnings.
+
+    ReactCurrentDispatcher.current = null;
+    disableLogs();
+  }
+
+  try {
+    // This should throw.
+    if (construct) {
+      // Something should be setting the props in the constructor.
+      var Fake = function () {
+        throw Error();
+      }; // $FlowFixMe
+
+
+      Object.defineProperty(Fake.prototype, 'props', {
+        set: function () {
+          // We use a throwing setter instead of frozen or non-writable props
+          // because that won't throw in a non-strict mode function.
+          throw Error();
+        }
+      });
+
+      if (typeof Reflect === 'object' && Reflect.construct) {
+        // We construct a different control for this case to include any extra
+        // frames added by the construct call.
+        try {
+          Reflect.construct(Fake, []);
+        } catch (x) {
+          control = x;
+        }
+
+        Reflect.construct(fn, [], Fake);
+      } else {
+        try {
+          Fake.call();
+        } catch (x) {
+          control = x;
+        }
+
+        fn.call(Fake.prototype);
+      }
+    } else {
+      try {
+        throw Error();
+      } catch (x) {
+        control = x;
+      }
+
+      fn();
+    }
+  } catch (sample) {
+    // This is inlined manually because closure doesn't do it for us.
+    if (sample && control && typeof sample.stack === 'string') {
+      // This extracts the first frame from the sample that isn't also in the control.
+      // Skipping one frame that we assume is the frame that calls the two.
+      var sampleLines = sample.stack.split('\n');
+      var controlLines = control.stack.split('\n');
+      var s = sampleLines.length - 1;
+      var c = controlLines.length - 1;
+
+      while (s >= 1 && c >= 0 && sampleLines[s] !== controlLines[c]) {
+        // We expect at least one stack frame to be shared.
+        // Typically this will be the root most one. However, stack frames may be
+        // cut off due to maximum stack limits. In this case, one maybe cut off
+        // earlier than the other. We assume that the sample is longer or the same
+        // and there for cut off earlier. So we should find the root most frame in
+        // the sample somewhere in the control.
+        c--;
+      }
+
+      for (; s >= 1 && c >= 0; s--, c--) {
+        // Next we find the first one that isn't the same which should be the
+        // frame that called our sample function and the control.
+        if (sampleLines[s] !== controlLines[c]) {
+          // In V8, the first line is describing the message but other VMs don't.
+          // If we're about to return the first line, and the control is also on the same
+          // line, that's a pretty good indicator that our sample threw at same line as
+          // the control. I.e. before we entered the sample frame. So we ignore this result.
+          // This can happen if you passed a class to function component, or non-function.
+          if (s !== 1 || c !== 1) {
+            do {
+              s--;
+              c--; // We may still have similar intermediate frames from the construct call.
+              // The next one that isn't the same should be our match though.
+
+              if (c < 0 || sampleLines[s] !== controlLines[c]) {
+                // V8 adds a "new" prefix for native classes. Let's remove it to make it prettier.
+                var _frame = '\n' + sampleLines[s].replace(' at new ', ' at '); // If our component frame is labeled "<anonymous>"
+                // but we have a user-provided "displayName"
+                // splice it in to make the stack more readable.
+
+
+                if (fn.displayName && _frame.includes('<anonymous>')) {
+                  _frame = _frame.replace('<anonymous>', fn.displayName);
+                }
+
+                {
+                  if (typeof fn === 'function') {
+                    componentFrameCache.set(fn, _frame);
+                  }
+                } // Return the line we found.
+
+
+                return _frame;
+              }
+            } while (s >= 1 && c >= 0);
+          }
+
+          break;
+        }
+      }
+    }
+  } finally {
+    reentry = false;
+
+    {
+      ReactCurrentDispatcher.current = previousDispatcher;
+      reenableLogs();
+    }
+
+    Error.prepareStackTrace = previousPrepareStackTrace;
+  } // Fallback to just using the name if we couldn't make it throw.
+
+
+  var name = fn ? fn.displayName || fn.name : '';
+  var syntheticFrame = name ? describeBuiltInComponentFrame(name) : '';
+
+  {
+    if (typeof fn === 'function') {
+      componentFrameCache.set(fn, syntheticFrame);
+    }
+  }
+
+  return syntheticFrame;
+}
+function describeFunctionComponentFrame(fn, source, ownerFn) {
+  {
+    return describeNativeComponentFrame(fn, false);
+  }
+}
+
+function shouldConstruct(Component) {
+  var prototype = Component.prototype;
+  return !!(prototype && prototype.isReactComponent);
+}
+
+function describeUnknownElementTypeFrameInDEV(type, source, ownerFn) {
+
+  if (type == null) {
+    return '';
+  }
+
+  if (typeof type === 'function') {
+    {
+      return describeNativeComponentFrame(type, shouldConstruct(type));
+    }
+  }
+
+  if (typeof type === 'string') {
+    return describeBuiltInComponentFrame(type);
+  }
+
+  switch (type) {
+    case REACT_SUSPENSE_TYPE:
+      return describeBuiltInComponentFrame('Suspense');
+
+    case REACT_SUSPENSE_LIST_TYPE:
+      return describeBuiltInComponentFrame('SuspenseList');
+  }
+
+  if (typeof type === 'object') {
+    switch (type.$$typeof) {
+      case REACT_FORWARD_REF_TYPE:
+        return describeFunctionComponentFrame(type.render);
+
+      case REACT_MEMO_TYPE:
+        // Memo may contain any component type so we recursively resolve it.
+        return describeUnknownElementTypeFrameInDEV(type.type, source, ownerFn);
+
+      case REACT_LAZY_TYPE:
+        {
+          var lazyComponent = type;
+          var payload = lazyComponent._payload;
+          var init = lazyComponent._init;
+
+          try {
+            // Lazy may contain any component type so we recursively resolve it.
+            return describeUnknownElementTypeFrameInDEV(init(payload), source, ownerFn);
+          } catch (x) {}
+        }
+    }
+  }
+
+  return '';
+}
+
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+
+var loggedTypeFailures = {};
+var ReactDebugCurrentFrame = ReactSharedInternals.ReactDebugCurrentFrame;
+
+function setCurrentlyValidatingElement(element) {
+  {
+    if (element) {
+      var owner = element._owner;
+      var stack = describeUnknownElementTypeFrameInDEV(element.type, element._source, owner ? owner.type : null);
+      ReactDebugCurrentFrame.setExtraStackFrame(stack);
+    } else {
+      ReactDebugCurrentFrame.setExtraStackFrame(null);
+    }
+  }
+}
+
+function checkPropTypes(typeSpecs, values, location, componentName, element) {
+  {
+    // $FlowFixMe This is okay but Flow doesn't know it.
+    var has = Function.call.bind(hasOwnProperty);
+
+    for (var typeSpecName in typeSpecs) {
+      if (has(typeSpecs, typeSpecName)) {
+        var error$1 = void 0; // Prop type validation may throw. In case they do, we don't want to
+        // fail the render phase where it didn't fail before. So we log it.
+        // After these have been cleaned up, we'll let them throw.
+
+        try {
+          // This is intentionally an invariant that gets caught. It's the same
+          // behavior as without this statement except with a better message.
+          if (typeof typeSpecs[typeSpecName] !== 'function') {
+            // eslint-disable-next-line react-internal/prod-error-codes
+            var err = Error((componentName || 'React class') + ': ' + location + ' type `' + typeSpecName + '` is invalid; ' + 'it must be a function, usually from the `prop-types` package, but received `' + typeof typeSpecs[typeSpecName] + '`.' + 'This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.');
+            err.name = 'Invariant Violation';
+            throw err;
+          }
+
+          error$1 = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED');
+        } catch (ex) {
+          error$1 = ex;
+        }
+
+        if (error$1 && !(error$1 instanceof Error)) {
+          setCurrentlyValidatingElement(element);
+
+          error('%s: type specification of %s' + ' `%s` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a %s. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).', componentName || 'React class', location, typeSpecName, typeof error$1);
+
+          setCurrentlyValidatingElement(null);
+        }
+
+        if (error$1 instanceof Error && !(error$1.message in loggedTypeFailures)) {
+          // Only monitor this failure once because there tends to be a lot of the
+          // same error.
+          loggedTypeFailures[error$1.message] = true;
+          setCurrentlyValidatingElement(element);
+
+          error('Failed %s type: %s', location, error$1.message);
+
+          setCurrentlyValidatingElement(null);
+        }
+      }
+    }
+  }
+}
+
+var isArrayImpl = Array.isArray; // eslint-disable-next-line no-redeclare
+
+function isArray(a) {
+  return isArrayImpl(a);
+}
+
+/*
+ * The `'' + value` pattern (used in in perf-sensitive code) throws for Symbol
+ * and Temporal.* types. See https://github.com/facebook/react/pull/22064.
+ *
+ * The functions in this module will throw an easier-to-understand,
+ * easier-to-debug exception with a clear errors message message explaining the
+ * problem. (Instead of a confusing exception thrown inside the implementation
+ * of the `value` object).
+ */
+// $FlowFixMe only called in DEV, so void return is not possible.
+function typeName(value) {
+  {
+    // toStringTag is needed for namespaced types like Temporal.Instant
+    var hasToStringTag = typeof Symbol === 'function' && Symbol.toStringTag;
+    var type = hasToStringTag && value[Symbol.toStringTag] || value.constructor.name || 'Object';
+    return type;
+  }
+} // $FlowFixMe only called in DEV, so void return is not possible.
+
+
+function willCoercionThrow(value) {
+  {
+    try {
+      testStringCoercion(value);
+      return false;
+    } catch (e) {
+      return true;
+    }
+  }
+}
+
+function testStringCoercion(value) {
+  // If you ended up here by following an exception call stack, here's what's
+  // happened: you supplied an object or symbol value to React (as a prop, key,
+  // DOM attribute, CSS property, string ref, etc.) and when React tried to
+  // coerce it to a string using `'' + value`, an exception was thrown.
+  //
+  // The most common types that will cause this exception are `Symbol` instances
+  // and Temporal objects like `Temporal.Instant`. But any object that has a
+  // `valueOf` or `[Symbol.toPrimitive]` method that throws will also cause this
+  // exception. (Library authors do this to prevent users from using built-in
+  // numeric operators like `+` or comparison operators like `>=` because custom
+  // methods are needed to perform accurate arithmetic or comparison.)
+  //
+  // To fix the problem, coerce this object or symbol value to a string before
+  // passing it to React. The most reliable way is usually `String(value)`.
+  //
+  // To find which value is throwing, check the browser or debugger console.
+  // Before this exception was thrown, there should be `console.error` output
+  // that shows the type (Symbol, Temporal.PlainDate, etc.) that caused the
+  // problem and how that type was used: key, atrribute, input value prop, etc.
+  // In most cases, this console output also shows the component and its
+  // ancestor components where the exception happened.
+  //
+  // eslint-disable-next-line react-internal/safe-string-coercion
+  return '' + value;
+}
+function checkKeyStringCoercion(value) {
+  {
+    if (willCoercionThrow(value)) {
+      error('The provided key is an unsupported type %s.' + ' This value must be coerced to a string before before using it here.', typeName(value));
+
+      return testStringCoercion(value); // throw (to help callers find troubleshooting comments)
+    }
+  }
+}
+
+var ReactCurrentOwner = ReactSharedInternals.ReactCurrentOwner;
+var RESERVED_PROPS = {
+  key: true,
+  ref: true,
+  __self: true,
+  __source: true
+};
+var specialPropKeyWarningShown;
+var specialPropRefWarningShown;
+var didWarnAboutStringRefs;
+
+{
+  didWarnAboutStringRefs = {};
+}
+
+function hasValidRef(config) {
+  {
+    if (hasOwnProperty.call(config, 'ref')) {
+      var getter = Object.getOwnPropertyDescriptor(config, 'ref').get;
+
+      if (getter && getter.isReactWarning) {
+        return false;
+      }
+    }
+  }
+
+  return config.ref !== undefined;
+}
+
+function hasValidKey(config) {
+  {
+    if (hasOwnProperty.call(config, 'key')) {
+      var getter = Object.getOwnPropertyDescriptor(config, 'key').get;
+
+      if (getter && getter.isReactWarning) {
+        return false;
+      }
+    }
+  }
+
+  return config.key !== undefined;
+}
+
+function warnIfStringRefCannotBeAutoConverted(config, self) {
+  {
+    if (typeof config.ref === 'string' && ReactCurrentOwner.current && self && ReactCurrentOwner.current.stateNode !== self) {
+      var componentName = getComponentNameFromType(ReactCurrentOwner.current.type);
+
+      if (!didWarnAboutStringRefs[componentName]) {
+        error('Component "%s" contains the string ref "%s". ' + 'Support for string refs will be removed in a future major release. ' + 'This case cannot be automatically converted to an arrow function. ' + 'We ask you to manually fix this case by using useRef() or createRef() instead. ' + 'Learn more about using refs safely here: ' + 'https://reactjs.org/link/strict-mode-string-ref', getComponentNameFromType(ReactCurrentOwner.current.type), config.ref);
+
+        didWarnAboutStringRefs[componentName] = true;
+      }
+    }
+  }
+}
+
+function defineKeyPropWarningGetter(props, displayName) {
+  {
+    var warnAboutAccessingKey = function () {
+      if (!specialPropKeyWarningShown) {
+        specialPropKeyWarningShown = true;
+
+        error('%s: `key` is not a prop. Trying to access it will result ' + 'in `undefined` being returned. If you need to access the same ' + 'value within the child component, you should pass it as a different ' + 'prop. (https://reactjs.org/link/special-props)', displayName);
+      }
+    };
+
+    warnAboutAccessingKey.isReactWarning = true;
+    Object.defineProperty(props, 'key', {
+      get: warnAboutAccessingKey,
+      configurable: true
+    });
+  }
+}
+
+function defineRefPropWarningGetter(props, displayName) {
+  {
+    var warnAboutAccessingRef = function () {
+      if (!specialPropRefWarningShown) {
+        specialPropRefWarningShown = true;
+
+        error('%s: `ref` is not a prop. Trying to access it will result ' + 'in `undefined` being returned. If you need to access the same ' + 'value within the child component, you should pass it as a different ' + 'prop. (https://reactjs.org/link/special-props)', displayName);
+      }
+    };
+
+    warnAboutAccessingRef.isReactWarning = true;
+    Object.defineProperty(props, 'ref', {
+      get: warnAboutAccessingRef,
+      configurable: true
+    });
+  }
+}
+/**
+ * Factory method to create a new React element. This no longer adheres to
+ * the class pattern, so do not use new to call it. Also, instanceof check
+ * will not work. Instead test $$typeof field against Symbol.for('react.element') to check
+ * if something is a React Element.
+ *
+ * @param {*} type
+ * @param {*} props
+ * @param {*} key
+ * @param {string|object} ref
+ * @param {*} owner
+ * @param {*} self A *temporary* helper to detect places where `this` is
+ * different from the `owner` when React.createElement is called, so that we
+ * can warn. We want to get rid of owner and replace string `ref`s with arrow
+ * functions, and as long as `this` and owner are the same, there will be no
+ * change in behavior.
+ * @param {*} source An annotation object (added by a transpiler or otherwise)
+ * indicating filename, line number, and/or other information.
+ * @internal
+ */
+
+
+var ReactElement = function (type, key, ref, self, source, owner, props) {
+  var element = {
+    // This tag allows us to uniquely identify this as a React Element
+    $$typeof: REACT_ELEMENT_TYPE,
+    // Built-in properties that belong on the element
+    type: type,
+    key: key,
+    ref: ref,
+    props: props,
+    // Record the component responsible for creating this element.
+    _owner: owner
+  };
+
+  {
+    // The validation flag is currently mutative. We put it on
+    // an external backing store so that we can freeze the whole object.
+    // This can be replaced with a WeakMap once they are implemented in
+    // commonly used development environments.
+    element._store = {}; // To make comparing ReactElements easier for testing purposes, we make
+    // the validation flag non-enumerable (where possible, which should
+    // include every environment we run tests in), so the test framework
+    // ignores it.
+
+    Object.defineProperty(element._store, 'validated', {
+      configurable: false,
+      enumerable: false,
+      writable: true,
+      value: false
+    }); // self and source are DEV only properties.
+
+    Object.defineProperty(element, '_self', {
+      configurable: false,
+      enumerable: false,
+      writable: false,
+      value: self
+    }); // Two elements created in two different places should be considered
+    // equal for testing purposes and therefore we hide it from enumeration.
+
+    Object.defineProperty(element, '_source', {
+      configurable: false,
+      enumerable: false,
+      writable: false,
+      value: source
+    });
+
+    if (Object.freeze) {
+      Object.freeze(element.props);
+      Object.freeze(element);
+    }
+  }
+
+  return element;
+};
+/**
+ * https://github.com/reactjs/rfcs/pull/107
+ * @param {*} type
+ * @param {object} props
+ * @param {string} key
+ */
+
+function jsxDEV(type, config, maybeKey, source, self) {
+  {
+    var propName; // Reserved names are extracted
+
+    var props = {};
+    var key = null;
+    var ref = null; // Currently, key can be spread in as a prop. This causes a potential
+    // issue if key is also explicitly declared (ie. <div {...props} key="Hi" />
+    // or <div key="Hi" {...props} /> ). We want to deprecate key spread,
+    // but as an intermediary step, we will use jsxDEV for everything except
+    // <div {...props} key="Hi" />, because we aren't currently able to tell if
+    // key is explicitly declared to be undefined or not.
+
+    if (maybeKey !== undefined) {
+      {
+        checkKeyStringCoercion(maybeKey);
+      }
+
+      key = '' + maybeKey;
+    }
+
+    if (hasValidKey(config)) {
+      {
+        checkKeyStringCoercion(config.key);
+      }
+
+      key = '' + config.key;
+    }
+
+    if (hasValidRef(config)) {
+      ref = config.ref;
+      warnIfStringRefCannotBeAutoConverted(config, self);
+    } // Remaining properties are added to a new props object
+
+
+    for (propName in config) {
+      if (hasOwnProperty.call(config, propName) && !RESERVED_PROPS.hasOwnProperty(propName)) {
+        props[propName] = config[propName];
+      }
+    } // Resolve default props
+
+
+    if (type && type.defaultProps) {
+      var defaultProps = type.defaultProps;
+
+      for (propName in defaultProps) {
+        if (props[propName] === undefined) {
+          props[propName] = defaultProps[propName];
+        }
+      }
+    }
+
+    if (key || ref) {
+      var displayName = typeof type === 'function' ? type.displayName || type.name || 'Unknown' : type;
+
+      if (key) {
+        defineKeyPropWarningGetter(props, displayName);
+      }
+
+      if (ref) {
+        defineRefPropWarningGetter(props, displayName);
+      }
+    }
+
+    return ReactElement(type, key, ref, self, source, ReactCurrentOwner.current, props);
+  }
+}
+
+var ReactCurrentOwner$1 = ReactSharedInternals.ReactCurrentOwner;
+var ReactDebugCurrentFrame$1 = ReactSharedInternals.ReactDebugCurrentFrame;
+
+function setCurrentlyValidatingElement$1(element) {
+  {
+    if (element) {
+      var owner = element._owner;
+      var stack = describeUnknownElementTypeFrameInDEV(element.type, element._source, owner ? owner.type : null);
+      ReactDebugCurrentFrame$1.setExtraStackFrame(stack);
+    } else {
+      ReactDebugCurrentFrame$1.setExtraStackFrame(null);
+    }
+  }
+}
+
+var propTypesMisspellWarningShown;
+
+{
+  propTypesMisspellWarningShown = false;
+}
+/**
+ * Verifies the object is a ReactElement.
+ * See https://reactjs.org/docs/react-api.html#isvalidelement
+ * @param {?object} object
+ * @return {boolean} True if `object` is a ReactElement.
+ * @final
+ */
+
+
+function isValidElement(object) {
+  {
+    return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+  }
+}
+
+function getDeclarationErrorAddendum() {
+  {
+    if (ReactCurrentOwner$1.current) {
+      var name = getComponentNameFromType(ReactCurrentOwner$1.current.type);
+
+      if (name) {
+        return '\n\nCheck the render method of `' + name + '`.';
+      }
+    }
+
+    return '';
+  }
+}
+
+function getSourceInfoErrorAddendum(source) {
+  {
+    if (source !== undefined) {
+      var fileName = source.fileName.replace(/^.*[\\\/]/, '');
+      var lineNumber = source.lineNumber;
+      return '\n\nCheck your code at ' + fileName + ':' + lineNumber + '.';
+    }
+
+    return '';
+  }
+}
+/**
+ * Warn if there's no key explicitly set on dynamic arrays of children or
+ * object keys are not valid. This allows us to keep track of children between
+ * updates.
+ */
+
+
+var ownerHasKeyUseWarning = {};
+
+function getCurrentComponentErrorInfo(parentType) {
+  {
+    var info = getDeclarationErrorAddendum();
+
+    if (!info) {
+      var parentName = typeof parentType === 'string' ? parentType : parentType.displayName || parentType.name;
+
+      if (parentName) {
+        info = "\n\nCheck the top-level render call using <" + parentName + ">.";
+      }
+    }
+
+    return info;
+  }
+}
+/**
+ * Warn if the element doesn't have an explicit key assigned to it.
+ * This element is in an array. The array could grow and shrink or be
+ * reordered. All children that haven't already been validated are required to
+ * have a "key" property assigned to it. Error statuses are cached so a warning
+ * will only be shown once.
+ *
+ * @internal
+ * @param {ReactElement} element Element that requires a key.
+ * @param {*} parentType element's parent's type.
+ */
+
+
+function validateExplicitKey(element, parentType) {
+  {
+    if (!element._store || element._store.validated || element.key != null) {
+      return;
+    }
+
+    element._store.validated = true;
+    var currentComponentErrorInfo = getCurrentComponentErrorInfo(parentType);
+
+    if (ownerHasKeyUseWarning[currentComponentErrorInfo]) {
+      return;
+    }
+
+    ownerHasKeyUseWarning[currentComponentErrorInfo] = true; // Usually the current owner is the offender, but if it accepts children as a
+    // property, it may be the creator of the child that's responsible for
+    // assigning it a key.
+
+    var childOwner = '';
+
+    if (element && element._owner && element._owner !== ReactCurrentOwner$1.current) {
+      // Give the component that originally created this child.
+      childOwner = " It was passed a child from " + getComponentNameFromType(element._owner.type) + ".";
+    }
+
+    setCurrentlyValidatingElement$1(element);
+
+    error('Each child in a list should have a unique "key" prop.' + '%s%s See https://reactjs.org/link/warning-keys for more information.', currentComponentErrorInfo, childOwner);
+
+    setCurrentlyValidatingElement$1(null);
+  }
+}
+/**
+ * Ensure that every element either is passed in a static location, in an
+ * array with an explicit keys property defined, or in an object literal
+ * with valid key property.
+ *
+ * @internal
+ * @param {ReactNode} node Statically passed child of any type.
+ * @param {*} parentType node's parent's type.
+ */
+
+
+function validateChildKeys(node, parentType) {
+  {
+    if (typeof node !== 'object') {
+      return;
+    }
+
+    if (isArray(node)) {
+      for (var i = 0; i < node.length; i++) {
+        var child = node[i];
+
+        if (isValidElement(child)) {
+          validateExplicitKey(child, parentType);
+        }
+      }
+    } else if (isValidElement(node)) {
+      // This element was passed in a valid location.
+      if (node._store) {
+        node._store.validated = true;
+      }
+    } else if (node) {
+      var iteratorFn = getIteratorFn(node);
+
+      if (typeof iteratorFn === 'function') {
+        // Entry iterators used to provide implicit keys,
+        // but now we print a separate warning for them later.
+        if (iteratorFn !== node.entries) {
+          var iterator = iteratorFn.call(node);
+          var step;
+
+          while (!(step = iterator.next()).done) {
+            if (isValidElement(step.value)) {
+              validateExplicitKey(step.value, parentType);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+/**
+ * Given an element, validate that its props follow the propTypes definition,
+ * provided by the type.
+ *
+ * @param {ReactElement} element
+ */
+
+
+function validatePropTypes(element) {
+  {
+    var type = element.type;
+
+    if (type === null || type === undefined || typeof type === 'string') {
+      return;
+    }
+
+    var propTypes;
+
+    if (typeof type === 'function') {
+      propTypes = type.propTypes;
+    } else if (typeof type === 'object' && (type.$$typeof === REACT_FORWARD_REF_TYPE || // Note: Memo only checks outer props here.
+    // Inner props are checked in the reconciler.
+    type.$$typeof === REACT_MEMO_TYPE)) {
+      propTypes = type.propTypes;
+    } else {
+      return;
+    }
+
+    if (propTypes) {
+      // Intentionally inside to avoid triggering lazy initializers:
+      var name = getComponentNameFromType(type);
+      checkPropTypes(propTypes, element.props, 'prop', name, element);
+    } else if (type.PropTypes !== undefined && !propTypesMisspellWarningShown) {
+      propTypesMisspellWarningShown = true; // Intentionally inside to avoid triggering lazy initializers:
+
+      var _name = getComponentNameFromType(type);
+
+      error('Component %s declared `PropTypes` instead of `propTypes`. Did you misspell the property assignment?', _name || 'Unknown');
+    }
+
+    if (typeof type.getDefaultProps === 'function' && !type.getDefaultProps.isReactClassApproved) {
+      error('getDefaultProps is only used on classic React.createClass ' + 'definitions. Use a static property named `defaultProps` instead.');
+    }
+  }
+}
+/**
+ * Given a fragment, validate that it can only be provided with fragment props
+ * @param {ReactElement} fragment
+ */
+
+
+function validateFragmentProps(fragment) {
+  {
+    var keys = Object.keys(fragment.props);
+
+    for (var i = 0; i < keys.length; i++) {
+      var key = keys[i];
+
+      if (key !== 'children' && key !== 'key') {
+        setCurrentlyValidatingElement$1(fragment);
+
+        error('Invalid prop `%s` supplied to `React.Fragment`. ' + 'React.Fragment can only have `key` and `children` props.', key);
+
+        setCurrentlyValidatingElement$1(null);
+        break;
+      }
+    }
+
+    if (fragment.ref !== null) {
+      setCurrentlyValidatingElement$1(fragment);
+
+      error('Invalid attribute `ref` supplied to `React.Fragment`.');
+
+      setCurrentlyValidatingElement$1(null);
+    }
+  }
+}
+
+var didWarnAboutKeySpread = {};
+function jsxWithValidation(type, props, key, isStaticChildren, source, self) {
+  {
+    var validType = isValidElementType(type); // We warn in this case but don't throw. We expect the element creation to
+    // succeed and there will likely be errors in render.
+
+    if (!validType) {
+      var info = '';
+
+      if (type === undefined || typeof type === 'object' && type !== null && Object.keys(type).length === 0) {
+        info += ' You likely forgot to export your component from the file ' + "it's defined in, or you might have mixed up default and named imports.";
+      }
+
+      var sourceInfo = getSourceInfoErrorAddendum(source);
+
+      if (sourceInfo) {
+        info += sourceInfo;
+      } else {
+        info += getDeclarationErrorAddendum();
+      }
+
+      var typeString;
+
+      if (type === null) {
+        typeString = 'null';
+      } else if (isArray(type)) {
+        typeString = 'array';
+      } else if (type !== undefined && type.$$typeof === REACT_ELEMENT_TYPE) {
+        typeString = "<" + (getComponentNameFromType(type.type) || 'Unknown') + " />";
+        info = ' Did you accidentally export a JSX literal instead of a component?';
+      } else {
+        typeString = typeof type;
+      }
+
+      error('React.jsx: type is invalid -- expected a string (for ' + 'built-in components) or a class/function (for composite ' + 'components) but got: %s.%s', typeString, info);
+    }
+
+    var element = jsxDEV(type, props, key, source, self); // The result can be nullish if a mock or a custom function is used.
+    // TODO: Drop this when these are no longer allowed as the type argument.
+
+    if (element == null) {
+      return element;
+    } // Skip key warning if the type isn't valid since our key validation logic
+    // doesn't expect a non-string/function type and can throw confusing errors.
+    // We don't want exception behavior to differ between dev and prod.
+    // (Rendering will throw with a helpful message and as soon as the type is
+    // fixed, the key warnings will appear.)
+
+
+    if (validType) {
+      var children = props.children;
+
+      if (children !== undefined) {
+        if (isStaticChildren) {
+          if (isArray(children)) {
+            for (var i = 0; i < children.length; i++) {
+              validateChildKeys(children[i], type);
+            }
+
+            if (Object.freeze) {
+              Object.freeze(children);
+            }
+          } else {
+            error('React.jsx: Static children should always be an array. ' + 'You are likely explicitly calling React.jsxs or React.jsxDEV. ' + 'Use the Babel transform instead.');
+          }
+        } else {
+          validateChildKeys(children, type);
+        }
+      }
+    }
+
+    {
+      if (hasOwnProperty.call(props, 'key')) {
+        var componentName = getComponentNameFromType(type);
+        var keys = Object.keys(props).filter(function (k) {
+          return k !== 'key';
+        });
+        var beforeExample = keys.length > 0 ? '{key: someKey, ' + keys.join(': ..., ') + ': ...}' : '{key: someKey}';
+
+        if (!didWarnAboutKeySpread[componentName + beforeExample]) {
+          var afterExample = keys.length > 0 ? '{' + keys.join(': ..., ') + ': ...}' : '{}';
+
+          error('A props object containing a "key" prop is being spread into JSX:\n' + '  let props = %s;\n' + '  <%s {...props} />\n' + 'React keys must be passed directly to JSX without using spread:\n' + '  let props = %s;\n' + '  <%s key={someKey} {...props} />', beforeExample, componentName, afterExample, componentName);
+
+          didWarnAboutKeySpread[componentName + beforeExample] = true;
+        }
+      }
+    }
+
+    if (type === REACT_FRAGMENT_TYPE) {
+      validateFragmentProps(element);
+    } else {
+      validatePropTypes(element);
+    }
+
+    return element;
+  }
+} // These two functions exist to still get child warnings in dev
+// even with the prod transform. This means that jsxDEV is purely
+// opt-in behavior for better messages but that we won't stop
+// giving you warnings if you use production apis.
+
+function jsxWithValidationStatic(type, props, key) {
+  {
+    return jsxWithValidation(type, props, key, true);
+  }
+}
+function jsxWithValidationDynamic(type, props, key) {
+  {
+    return jsxWithValidation(type, props, key, false);
+  }
+}
+
+var jsx =  jsxWithValidationDynamic ; // we may want to special case jsxs internally to take advantage of static children.
+// for now we can ship identical prod functions
+
+var jsxs =  jsxWithValidationStatic ;
+
+exports.Fragment = REACT_FRAGMENT_TYPE;
+exports.jsx = jsx;
+exports.jsxs = jsxs;
+  })();
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/react/cjs/react.development.js":
 /*!*****************************************************!*\
   !*** ./node_modules/react/cjs/react.development.js ***!
   \*****************************************************/
 /***/ ((module, exports, __webpack_require__) => {
 
+"use strict";
 /* module decorator */ module = __webpack_require__.nmd(module);
 /**
  * @license React
@@ -42365,10 +45891,27 @@ if (
   \*************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 
 if (false) {} else {
   module.exports = __webpack_require__(/*! ./cjs/react.development.js */ "./node_modules/react/cjs/react.development.js");
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/react/jsx-runtime.js":
+/*!*******************************************!*\
+  !*** ./node_modules/react/jsx-runtime.js ***!
+  \*******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+if (false) {} else {
+  module.exports = __webpack_require__(/*! ./cjs/react-jsx-runtime.development.js */ "./node_modules/react/cjs/react-jsx-runtime.development.js");
 }
 
 
@@ -42380,6 +45923,7 @@ if (false) {} else {
   \*************************************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
+"use strict";
 /**
  * @license React
  * scheduler.development.js
@@ -43024,11 +46568,65 @@ if (
   \*****************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 
 if (false) {} else {
   module.exports = __webpack_require__(/*! ./cjs/scheduler.development.js */ "./node_modules/scheduler/cjs/scheduler.development.js");
 }
+
+
+/***/ }),
+
+/***/ "./node_modules/react-circular-progressbar/dist/styles.css":
+/*!*****************************************************************!*\
+  !*** ./node_modules/react-circular-progressbar/dist/styles.css ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../style-loader/dist/runtime/styleDomAPI.js */ "./node_modules/style-loader/dist/runtime/styleDomAPI.js");
+/* harmony import */ var _style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../style-loader/dist/runtime/insertBySelector.js */ "./node_modules/style-loader/dist/runtime/insertBySelector.js");
+/* harmony import */ var _style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../style-loader/dist/runtime/setAttributesWithoutAttributes.js */ "./node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js");
+/* harmony import */ var _style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! !../../style-loader/dist/runtime/insertStyleElement.js */ "./node_modules/style-loader/dist/runtime/insertStyleElement.js");
+/* harmony import */ var _style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../../style-loader/dist/runtime/styleTagTransform.js */ "./node_modules/style-loader/dist/runtime/styleTagTransform.js");
+/* harmony import */ var _style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _css_loader_dist_cjs_js_styles_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../css-loader/dist/cjs.js!./styles.css */ "./node_modules/css-loader/dist/cjs.js!./node_modules/react-circular-progressbar/dist/styles.css");
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+var options = {};
+
+options.styleTagTransform = (_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default());
+options.setAttributes = (_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default());
+options.insert = _style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default().bind(null, "head");
+options.domAPI = (_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
+options.insertStyleElement = (_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
+
+var update = _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_css_loader_dist_cjs_js_styles_css__WEBPACK_IMPORTED_MODULE_6__["default"], options);
+
+
+
+
+       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_css_loader_dist_cjs_js_styles_css__WEBPACK_IMPORTED_MODULE_6__["default"] && _css_loader_dist_cjs_js_styles_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _css_loader_dist_cjs_js_styles_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
 
 
 /***/ }),
@@ -43039,6 +46637,7 @@ if (false) {} else {
   \****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -43091,6 +46690,7 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \***********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -43137,12 +46737,66 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
+/***/ "./public/style/Pomodoro.css":
+/*!***********************************!*\
+  !*** ./public/style/Pomodoro.css ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/styleDomAPI.js */ "./node_modules/style-loader/dist/runtime/styleDomAPI.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/insertBySelector.js */ "./node_modules/style-loader/dist/runtime/insertBySelector.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js */ "./node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/insertStyleElement.js */ "./node_modules/style-loader/dist/runtime/insertStyleElement.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/styleTagTransform.js */ "./node_modules/style-loader/dist/runtime/styleTagTransform.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_Pomodoro_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js!./Pomodoro.css */ "./node_modules/css-loader/dist/cjs.js!./public/style/Pomodoro.css");
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+var options = {};
+
+options.styleTagTransform = (_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default());
+options.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default());
+options.insert = _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default().bind(null, "head");
+options.domAPI = (_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
+options.insertStyleElement = (_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_Pomodoro_css__WEBPACK_IMPORTED_MODULE_6__["default"], options);
+
+
+
+
+       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_Pomodoro_css__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_Pomodoro_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_Pomodoro_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
+
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js":
 /*!****************************************************************************!*\
   !*** ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js ***!
   \****************************************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 
 var stylesInDOM = [];
@@ -43236,6 +46890,7 @@ module.exports = function (list, options) {
   \********************************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 
 var memo = {};
@@ -43279,6 +46934,7 @@ module.exports = insertBySelector;
   \**********************************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 
 /* istanbul ignore next  */
@@ -43298,6 +46954,7 @@ module.exports = insertStyleElement;
   \**********************************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+"use strict";
 
 
 /* istanbul ignore next  */
@@ -43317,6 +46974,7 @@ module.exports = setAttributesWithoutAttributes;
   \***************************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 
 /* istanbul ignore next  */
@@ -43387,6 +47045,7 @@ module.exports = domAPI;
   \*********************************************************************/
 /***/ ((module) => {
 
+"use strict";
 
 
 /* istanbul ignore next  */
@@ -43401,6 +47060,293 @@ function styleTagTransform(css, styleElement) {
   }
 }
 module.exports = styleTagTransform;
+
+/***/ }),
+
+/***/ "./node_modules/use-sound/dist/use-sound.esm.js":
+/*!******************************************************!*\
+  !*** ./node_modules/use-sound/dist/use-sound.esm.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   useSound: () => (/* binding */ useSound)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function _extends() {
+  return _extends = Object.assign ? Object.assign.bind() : function (n) {
+    for (var e = 1; e < arguments.length; e++) {
+      var t = arguments[e];
+      for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]);
+    }
+    return n;
+  }, _extends.apply(null, arguments);
+}
+function _objectWithoutPropertiesLoose(r, e) {
+  if (null == r) return {};
+  var t = {};
+  for (var n in r) if ({}.hasOwnProperty.call(r, n)) {
+    if (e.indexOf(n) >= 0) continue;
+    t[n] = r[n];
+  }
+  return t;
+}
+
+function useOnMount(callback) {
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(callback, []);
+}
+
+var _excluded = ["id", "volume", "playbackRate", "soundEnabled", "interrupt", "onload"];
+function useSound(src, _temp) {
+  var _ref = _temp === void 0 ? {} : _temp,
+    _ref$volume = _ref.volume,
+    volume = _ref$volume === void 0 ? 1 : _ref$volume,
+    _ref$playbackRate = _ref.playbackRate,
+    playbackRate = _ref$playbackRate === void 0 ? 1 : _ref$playbackRate,
+    _ref$soundEnabled = _ref.soundEnabled,
+    soundEnabled = _ref$soundEnabled === void 0 ? true : _ref$soundEnabled,
+    _ref$interrupt = _ref.interrupt,
+    interrupt = _ref$interrupt === void 0 ? false : _ref$interrupt,
+    onload = _ref.onload,
+    delegated = _objectWithoutPropertiesLoose(_ref, _excluded);
+  var HowlConstructor = react__WEBPACK_IMPORTED_MODULE_0___default().useRef(null);
+  var isMounted = react__WEBPACK_IMPORTED_MODULE_0___default().useRef(false);
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default().useState(null),
+    duration = _React$useState[0],
+    setDuration = _React$useState[1];
+  var _React$useState2 = react__WEBPACK_IMPORTED_MODULE_0___default().useState(null),
+    sound = _React$useState2[0],
+    setSound = _React$useState2[1];
+  var handleLoad = function handleLoad() {
+    if (typeof onload === 'function') {
+      // @ts-ignore
+      onload.call(this);
+    }
+    if (isMounted.current) {
+      // @ts-ignore
+      setDuration(this.duration() * 1000);
+    }
+    // @ts-ignore
+    setSound(this);
+  };
+  // We want to lazy-load Howler, since sounds can't play on load anyway.
+  useOnMount(function () {
+    __webpack_require__.e(/*! import() */ "vendors-node_modules_howler_dist_howler_js").then(__webpack_require__.t.bind(__webpack_require__, /*! howler */ "./node_modules/howler/dist/howler.js", 23)).then(function (mod) {
+      if (!isMounted.current) {
+        var _mod$Howl;
+        // Depending on the module system used, `mod` might hold
+        // the export directly, or it might be under `default`.
+        HowlConstructor.current = (_mod$Howl = mod.Howl) !== null && _mod$Howl !== void 0 ? _mod$Howl : mod["default"].Howl;
+        isMounted.current = true;
+        new HowlConstructor.current(_extends({
+          src: Array.isArray(src) ? src : [src],
+          volume: volume,
+          rate: playbackRate,
+          onload: handleLoad
+        }, delegated));
+      }
+    });
+    return function () {
+      isMounted.current = false;
+    };
+  });
+  // When the `src` changes, we have to do a whole thing where we recreate
+  // the Howl instance. This is because Howler doesn't expose a way to
+  // tweak the sound
+  react__WEBPACK_IMPORTED_MODULE_0___default().useEffect(function () {
+    if (HowlConstructor.current && sound) {
+      setSound(new HowlConstructor.current(_extends({
+        src: Array.isArray(src) ? src : [src],
+        volume: volume,
+        onload: handleLoad
+      }, delegated)));
+    }
+    // The linter wants to run this effect whenever ANYTHING changes,
+    // but very specifically I only want to recreate the Howl instance
+    // when the `src` changes. Other changes should have no effect.
+    // Passing array to the useEffect dependencies list will result in
+    // ifinite loop so we need to stringify it, for more details check
+    // https://github.com/facebook/react/issues/14476#issuecomment-471199055
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [JSON.stringify(src)]);
+  // Whenever volume/playbackRate are changed, change those properties
+  // on the sound instance.
+  react__WEBPACK_IMPORTED_MODULE_0___default().useEffect(function () {
+    if (sound) {
+      sound.volume(volume);
+      sound.rate(playbackRate);
+    }
+    // A weird bug means that including the `sound` here can trigger an
+    // error on unmount, where the state loses track of the sprites??
+    // No idea, but anyway I don't need to re-run this if only the `sound`
+    // changes.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [volume, playbackRate]);
+  var play = react__WEBPACK_IMPORTED_MODULE_0___default().useCallback(function (options) {
+    if (typeof options === 'undefined') {
+      options = {};
+    }
+    if (!sound || !soundEnabled && !options.forceSoundEnabled) {
+      return;
+    }
+    if (interrupt) {
+      sound.stop();
+    }
+    if (options.playbackRate) {
+      sound.rate(options.playbackRate);
+    }
+    sound.play(options.id);
+  }, [sound, soundEnabled, interrupt]);
+  var stop = react__WEBPACK_IMPORTED_MODULE_0___default().useCallback(function (id) {
+    if (!sound) {
+      return;
+    }
+    sound.stop(id);
+  }, [sound]);
+  var pause = react__WEBPACK_IMPORTED_MODULE_0___default().useCallback(function (id) {
+    if (!sound) {
+      return;
+    }
+    sound.pause(id);
+  }, [sound]);
+  var returnedValue = [play, {
+    sound: sound,
+    stop: stop,
+    pause: pause,
+    duration: duration
+  }];
+  return returnedValue;
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useSound);
+
+//# sourceMappingURL=use-sound.esm.js.map
+
+
+/***/ }),
+
+/***/ "data:image/svg+xml,%3Csvg width=%2714%27 height=%2721%27 viewBox=%270 0 14 21%27 fill=%27none%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath d=%27M1 6L7 2L13 6%27 stroke=%27%231E213F%27 stroke-opacity=%270.25%27 stroke-width=%272%27/%3E%3Cpath d=%27M1 15L7 19L13 15%27 stroke=%27%231E213F%27 stroke-opacity=%270.25%27 stroke-width=%272%27/%3E%3C/svg%3E%0A":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** data:image/svg+xml,%3Csvg width=%2714%27 height=%2721%27 viewBox=%270 0 14 21%27 fill=%27none%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath d=%27M1 6L7 2L13 6%27 stroke=%27%231E213F%27 stroke-opacity=%270.25%27 stroke-width=%272%27/%3E%3Cpath d=%27M1 15L7 19L13 15%27 stroke=%27%231E213F%27 stroke-opacity=%270.25%27 stroke-width=%272%27/%3E%3C/svg%3E%0A ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = "data:image/svg+xml,%3Csvg width=%2714%27 height=%2721%27 viewBox=%270 0 14 21%27 fill=%27none%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath d=%27M1 6L7 2L13 6%27 stroke=%27%231E213F%27 stroke-opacity=%270.25%27 stroke-width=%272%27/%3E%3Cpath d=%27M1 15L7 19L13 15%27 stroke=%27%231E213F%27 stroke-opacity=%270.25%27 stroke-width=%272%27/%3E%3C/svg%3E%0A";
+
+/***/ }),
+
+/***/ "data:image/svg+xml,%3Csvg width=%2715%27 height=%2711%27 viewBox=%270 0 15 11%27 fill=%27none%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath d=%27M1 5.5L4.95263 9.45263L13.4053 1%27 stroke=%27%23161932%27 stroke-width=%272%27/%3E%3C/svg%3E%0A":
+/*!***************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** data:image/svg+xml,%3Csvg width=%2715%27 height=%2711%27 viewBox=%270 0 15 11%27 fill=%27none%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath d=%27M1 5.5L4.95263 9.45263L13.4053 1%27 stroke=%27%23161932%27 stroke-width=%272%27/%3E%3C/svg%3E%0A ***!
+  \***************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = "data:image/svg+xml,%3Csvg width=%2715%27 height=%2711%27 viewBox=%270 0 15 11%27 fill=%27none%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath d=%27M1 5.5L4.95263 9.45263L13.4053 1%27 stroke=%27%23161932%27 stroke-width=%272%27/%3E%3C/svg%3E%0A";
+
+/***/ }),
+
+/***/ "./public/style/lofi-girl-lofi.gif":
+/*!*****************************************!*\
+  !*** ./public/style/lofi-girl-lofi.gif ***!
+  \*****************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "1fd34a3de58f616ac92e.gif";
+
+/***/ }),
+
+/***/ "./node_modules/classnames/index.js":
+/*!******************************************!*\
+  !*** ./node_modules/classnames/index.js ***!
+  \******************************************/
+/***/ ((module, exports) => {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+	Copyright (c) 2018 Jed Watson.
+	Licensed under the MIT License (MIT), see
+	http://jedwatson.github.io/classnames
+*/
+/* global define */
+
+(function () {
+	'use strict';
+
+	var hasOwn = {}.hasOwnProperty;
+
+	function classNames () {
+		var classes = '';
+
+		for (var i = 0; i < arguments.length; i++) {
+			var arg = arguments[i];
+			if (arg) {
+				classes = appendClass(classes, parseValue(arg));
+			}
+		}
+
+		return classes;
+	}
+
+	function parseValue (arg) {
+		if (typeof arg === 'string' || typeof arg === 'number') {
+			return arg;
+		}
+
+		if (typeof arg !== 'object') {
+			return '';
+		}
+
+		if (Array.isArray(arg)) {
+			return classNames.apply(null, arg);
+		}
+
+		if (arg.toString !== Object.prototype.toString && !arg.toString.toString().includes('[native code]')) {
+			return arg.toString();
+		}
+
+		var classes = '';
+
+		for (var key in arg) {
+			if (hasOwn.call(arg, key) && arg[key]) {
+				classes = appendClass(classes, key);
+			}
+		}
+
+		return classes;
+	}
+
+	function appendClass (value, newClass) {
+		if (!newClass) {
+			return value;
+		}
+	
+		if (value) {
+			return value + ' ' + newClass;
+		}
+	
+		return value + newClass;
+	}
+
+	if ( true && module.exports) {
+		classNames.default = classNames;
+		module.exports = classNames;
+	} else if (true) {
+		// register as 'classnames', consistent with npm package name
+		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
+			return classNames;
+		}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	} else {}
+}());
+
 
 /***/ })
 
@@ -43432,6 +47378,9 @@ module.exports = styleTagTransform;
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
+/******/ 	
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = __webpack_modules__;
 /******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
@@ -43488,9 +47437,89 @@ module.exports = styleTagTransform;
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/ensure chunk */
+/******/ 	(() => {
+/******/ 		__webpack_require__.f = {};
+/******/ 		// This file contains only the entry chunk.
+/******/ 		// The chunk loading function for additional chunks
+/******/ 		__webpack_require__.e = (chunkId) => {
+/******/ 			return Promise.all(Object.keys(__webpack_require__.f).reduce((promises, key) => {
+/******/ 				__webpack_require__.f[key](chunkId, promises);
+/******/ 				return promises;
+/******/ 			}, []));
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/get javascript chunk filename */
+/******/ 	(() => {
+/******/ 		// This function allow to reference async chunks
+/******/ 		__webpack_require__.u = (chunkId) => {
+/******/ 			// return url for filenames based on template
+/******/ 			return "" + chunkId + ".bundle.js";
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/load script */
+/******/ 	(() => {
+/******/ 		var inProgress = {};
+/******/ 		var dataWebpackPrefix = "site232422:";
+/******/ 		// loadScript function to load a script via script tag
+/******/ 		__webpack_require__.l = (url, done, key, chunkId) => {
+/******/ 			if(inProgress[url]) { inProgress[url].push(done); return; }
+/******/ 			var script, needAttach;
+/******/ 			if(key !== undefined) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				for(var i = 0; i < scripts.length; i++) {
+/******/ 					var s = scripts[i];
+/******/ 					if(s.getAttribute("src") == url || s.getAttribute("data-webpack") == dataWebpackPrefix + key) { script = s; break; }
+/******/ 				}
+/******/ 			}
+/******/ 			if(!script) {
+/******/ 				needAttach = true;
+/******/ 				script = document.createElement('script');
+/******/ 		
+/******/ 				script.charset = 'utf-8';
+/******/ 				script.timeout = 120;
+/******/ 				if (__webpack_require__.nc) {
+/******/ 					script.setAttribute("nonce", __webpack_require__.nc);
+/******/ 				}
+/******/ 				script.setAttribute("data-webpack", dataWebpackPrefix + key);
+/******/ 		
+/******/ 				script.src = url;
+/******/ 			}
+/******/ 			inProgress[url] = [done];
+/******/ 			var onScriptComplete = (prev, event) => {
+/******/ 				// avoid mem leaks in IE.
+/******/ 				script.onerror = script.onload = null;
+/******/ 				clearTimeout(timeout);
+/******/ 				var doneFns = inProgress[url];
+/******/ 				delete inProgress[url];
+/******/ 				script.parentNode && script.parentNode.removeChild(script);
+/******/ 				doneFns && doneFns.forEach((fn) => (fn(event)));
+/******/ 				if(prev) return prev(event);
+/******/ 			}
+/******/ 			var timeout = setTimeout(onScriptComplete.bind(null, undefined, { type: 'timeout', target: script }), 120000);
+/******/ 			script.onerror = onScriptComplete.bind(null, script.onerror);
+/******/ 			script.onload = onScriptComplete.bind(null, script.onload);
+/******/ 			needAttach && document.head.appendChild(script);
+/******/ 		};
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
@@ -43513,6 +47542,119 @@ module.exports = styleTagTransform;
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript && document.currentScript.tagName.toUpperCase() === 'SCRIPT')
+/******/ 				scriptUrl = document.currentScript.src;
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) {
+/******/ 					var i = scripts.length - 1;
+/******/ 					while (i > -1 && (!scriptUrl || !/^http(s?):/.test(scriptUrl))) scriptUrl = scripts[i--].src;
+/******/ 				}
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl;
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/jsonp chunk loading */
+/******/ 	(() => {
+/******/ 		__webpack_require__.b = document.baseURI || self.location.href;
+/******/ 		
+/******/ 		// object to store loaded and loading chunks
+/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
+/******/ 		var installedChunks = {
+/******/ 			"main": 0
+/******/ 		};
+/******/ 		
+/******/ 		__webpack_require__.f.j = (chunkId, promises) => {
+/******/ 				// JSONP chunk loading for javascript
+/******/ 				var installedChunkData = __webpack_require__.o(installedChunks, chunkId) ? installedChunks[chunkId] : undefined;
+/******/ 				if(installedChunkData !== 0) { // 0 means "already installed".
+/******/ 		
+/******/ 					// a Promise means "currently loading".
+/******/ 					if(installedChunkData) {
+/******/ 						promises.push(installedChunkData[2]);
+/******/ 					} else {
+/******/ 						if(true) { // all chunks have JS
+/******/ 							// setup Promise in chunk cache
+/******/ 							var promise = new Promise((resolve, reject) => (installedChunkData = installedChunks[chunkId] = [resolve, reject]));
+/******/ 							promises.push(installedChunkData[2] = promise);
+/******/ 		
+/******/ 							// start chunk loading
+/******/ 							var url = __webpack_require__.p + __webpack_require__.u(chunkId);
+/******/ 							// create error before stack unwound to get useful stacktrace later
+/******/ 							var error = new Error();
+/******/ 							var loadingEnded = (event) => {
+/******/ 								if(__webpack_require__.o(installedChunks, chunkId)) {
+/******/ 									installedChunkData = installedChunks[chunkId];
+/******/ 									if(installedChunkData !== 0) installedChunks[chunkId] = undefined;
+/******/ 									if(installedChunkData) {
+/******/ 										var errorType = event && (event.type === 'load' ? 'missing' : event.type);
+/******/ 										var realSrc = event && event.target && event.target.src;
+/******/ 										error.message = 'Loading chunk ' + chunkId + ' failed.\n(' + errorType + ': ' + realSrc + ')';
+/******/ 										error.name = 'ChunkLoadError';
+/******/ 										error.type = errorType;
+/******/ 										error.request = realSrc;
+/******/ 										installedChunkData[1](error);
+/******/ 									}
+/******/ 								}
+/******/ 							};
+/******/ 							__webpack_require__.l(url, loadingEnded, "chunk-" + chunkId, chunkId);
+/******/ 						}
+/******/ 					}
+/******/ 				}
+/******/ 		};
+/******/ 		
+/******/ 		// no prefetching
+/******/ 		
+/******/ 		// no preloaded
+/******/ 		
+/******/ 		// no HMR
+/******/ 		
+/******/ 		// no HMR manifest
+/******/ 		
+/******/ 		// no on chunks loaded
+/******/ 		
+/******/ 		// install a JSONP callback for chunk loading
+/******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
+/******/ 			var [chunkIds, moreModules, runtime] = data;
+/******/ 			// add "moreModules" to the modules object,
+/******/ 			// then flag all "chunkIds" as loaded and fire callback
+/******/ 			var moduleId, chunkId, i = 0;
+/******/ 			if(chunkIds.some((id) => (installedChunks[id] !== 0))) {
+/******/ 				for(moduleId in moreModules) {
+/******/ 					if(__webpack_require__.o(moreModules, moduleId)) {
+/******/ 						__webpack_require__.m[moduleId] = moreModules[moduleId];
+/******/ 					}
+/******/ 				}
+/******/ 				if(runtime) var result = runtime(__webpack_require__);
+/******/ 			}
+/******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
+/******/ 			for(;i < chunkIds.length; i++) {
+/******/ 				chunkId = chunkIds[i];
+/******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
+/******/ 					installedChunks[chunkId][0]();
+/******/ 				}
+/******/ 				installedChunks[chunkId] = 0;
+/******/ 			}
+/******/ 		
+/******/ 		}
+/******/ 		
+/******/ 		var chunkLoadingGlobal = self["webpackChunksite232422"] = self["webpackChunksite232422"] || [];
+/******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
+/******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/nonce */
 /******/ 	(() => {
 /******/ 		__webpack_require__.nc = undefined;
@@ -43520,6 +47662,9 @@ module.exports = styleTagTransform;
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+(() => {
+"use strict";
 /*!************************!*\
   !*** ./views/main.jsx ***!
   \************************/
@@ -43532,6 +47677,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot(document.getElementById('root')).render(/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().StrictMode), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_App_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
+})();
+
 /******/ })()
 ;
 //# sourceMappingURL=bundle.js.map
