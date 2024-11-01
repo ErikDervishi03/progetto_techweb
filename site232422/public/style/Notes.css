@@ -13,4 +13,40 @@
     background-color: #0056b3; /* Colore del pulsante quando si passa il mouse */
     transform: scale(1.1); /* Effetto di ingrandimento quando si passa il mouse */
   }
-  
+
+.notes-grid{
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(250px , auto),
+  );
+  grid-auto-rows: minmax(250px , auto);
+  gap: 20px;
+}
+
+.note-item{
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  cursor: pointer; 
+}
+
+.notes-header{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.notes-header button{
+  font-size: 16px;
+  background:transparent;
+  border:none;
+  cursor:pointer;
+  max-width: fit-content;
+}
+
+h2{
+  margin: 0;
+}

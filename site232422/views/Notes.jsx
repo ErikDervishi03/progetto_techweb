@@ -21,23 +21,42 @@ const Notes = () => {
         fetchNotes();
     }, []);
 
+    const deleteNote = async (id) => {
+        try {
+            const response = await fetch(`/api/notes/${id}`, {
+                method: 'DELETE',
+            });
+            if (response.ok) {
+                // Rimuovi la nota dallo stato locale
+                setNotes(notes.filter((note) => note._id !== id));
+            } else {
+                console.error("Errore durante l'eliminazione della nota");
+            }
+        } catch (error) {
+            console.error("Errore nella richiesta di eliminazione:", error);
+        }
+    };
+
     return (
         <>
             <Navbar />
             <div className="container mt-5">
-                <h1 className="text-center">App di Note</h1>
-                <div>
+                {/*<h1 className="text-center">App di Note</h1>*/}
+                <div className='notes-grid'>
                     {notes.map((note) => (
-                        <div className="note-item" key={note._id}>
-                            <div className="notes-header">
-                                <button>x</button>
+                        <div >
+                            <div className="note-item" key={note._id}>
+                                <div className="notes-header">
+                                    <i class="bi bi-pencil"></i>
+                                    <button onClick={() => deleteNote(note._id)}>x</button>
+                                </div>
+                                <h2>{note.obj}</h2>
+                                <p>{note.startingDate}</p>
+                                <p>{note.endingDate}</p>
+                                <p>{note.prio}</p>
+                                <p>{note.category}</p>
+                                <ReactMarkdown>{note.content}</ReactMarkdown> 
                             </div>
-                            <h2>{note.obj}</h2>
-                            <p>{note.startingDate}</p>
-                            <p>{note.endingDate}</p>
-                            <p>{note.prio}</p>
-                            <p>{note.category}</p>
-                            <ReactMarkdown>{note.content}</ReactMarkdown> 
                         </div>
                     ))}
                 </div>

@@ -5556,17 +5556,60 @@ var Notes = function Notes() {
     }();
     fetchNotes();
   }, []);
+  var deleteNote = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(id) {
+      var response;
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        while (1) switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.prev = 0;
+            _context2.next = 3;
+            return fetch("/api/notes/".concat(id), {
+              method: 'DELETE'
+            });
+          case 3:
+            response = _context2.sent;
+            if (response.ok) {
+              // Rimuovi la nota dallo stato locale
+              setNotes(notes.filter(function (note) {
+                return note._id !== id;
+              }));
+            } else {
+              console.error("Errore durante l'eliminazione della nota");
+            }
+            _context2.next = 10;
+            break;
+          case 7:
+            _context2.prev = 7;
+            _context2.t0 = _context2["catch"](0);
+            console.error("Errore nella richiesta di eliminazione:", _context2.t0);
+          case 10:
+          case "end":
+            return _context2.stop();
+        }
+      }, _callee2, null, [[0, 7]]);
+    }));
+    return function deleteNote(_x) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Navbar_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "container mt-5"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", {
-    className: "text-center"
-  }, "App di Note"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, notes.map(function (note) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "notes-grid"
+  }, notes.map(function (note) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "note-item",
       key: note._id
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "notes-header"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "x")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, note.obj), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, note.startingDate), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, note.endingDate), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, note.prio), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, note.category), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_markdown__WEBPACK_IMPORTED_MODULE_4__.Markdown, null, note.content));
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("i", {
+      "class": "bi bi-pencil"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+      onClick: function onClick() {
+        return deleteNote(note._id);
+      }
+    }, "x")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, note.obj), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, note.startingDate), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, note.endingDate), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, note.prio), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, note.category), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_markdown__WEBPACK_IMPORTED_MODULE_4__.Markdown, null, note.content)));
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
     to: "/form",
     type: "submit",
@@ -5737,7 +5780,7 @@ function NotesForm() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "prio",
     className: "form-label"
-  }, "inserire qui da 1 a 10 quanto \xE8 importante per te"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  }, "inserire qui quanto \xE8 importante per te"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "number",
     className: "form-control",
     id: "prio",
@@ -6248,7 +6291,43 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.fixed-bottom {
     background-color: #0056b3; /* Colore del pulsante quando si passa il mouse */
     transform: scale(1.1); /* Effetto di ingrandimento quando si passa il mouse */
   }
-  `, "",{"version":3,"sources":["webpack://./public/style/Notes.css"],"names":[],"mappings":"AAAA;IACI,eAAe;IACf,YAAY,EAAE,uBAAuB;IACrC,WAAW,EAAE,6BAA6B;EAC5C;;EAEA;IACE,wCAAwC;IACxC,iDAAiD;EACnD;;EAEA;IACE,yBAAyB,EAAE,iDAAiD;IAC5E,qBAAqB,EAAE,sDAAsD;EAC/E","sourcesContent":[".fixed-bottom {\n    position: fixed;\n    bottom: 20px; /* Distanza dal fondo */\n    right: 20px; /* Distanza dal lato destro */\n  }\n  \n  .btn {\n    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\n    transition: background-color 0.3s, transform 0.3s;\n  }\n  \n  .btn:hover {\n    background-color: #0056b3; /* Colore del pulsante quando si passa il mouse */\n    transform: scale(1.1); /* Effetto di ingrandimento quando si passa il mouse */\n  }\n  "],"sourceRoot":""}]);
+
+.notes-grid{
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(250px , auto),
+  );
+  grid-auto-rows: minmax(250px , auto);
+  gap: 20px;
+}
+
+.note-item{
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  cursor: pointer; 
+}
+
+.notes-header{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.notes-header button{
+  font-size: 16px;
+  background:transparent;
+  border:none;
+  cursor:pointer;
+  max-width: fit-content;
+}
+
+h2{
+  margin: 0;
+}`, "",{"version":3,"sources":["webpack://./public/style/Notes.css"],"names":[],"mappings":"AAAA;IACI,eAAe;IACf,YAAY,EAAE,uBAAuB;IACrC,WAAW,EAAE,6BAA6B;EAC5C;;EAEA;IACE,wCAAwC;IACxC,iDAAiD;EACnD;;EAEA;IACE,yBAAyB,EAAE,iDAAiD;IAC5E,qBAAqB,EAAE,sDAAsD;EAC/E;;AAEF;EACE,aAAa;EACb;;;GAGC;EACD,oCAAoC;EACpC,SAAS;AACX;;AAEA;EACE,aAAa;EACb,sBAAsB;EACtB,sBAAsB;EACtB,aAAa;EACb,kBAAkB;EAClB,yBAAyB;EACzB,eAAe;AACjB;;AAEA;EACE,aAAa;EACb,yBAAyB;AAC3B;;AAEA;EACE,eAAe;EACf,sBAAsB;EACtB,WAAW;EACX,cAAc;EACd,sBAAsB;AACxB;;AAEA;EACE,SAAS;AACX","sourcesContent":[".fixed-bottom {\n    position: fixed;\n    bottom: 20px; /* Distanza dal fondo */\n    right: 20px; /* Distanza dal lato destro */\n  }\n  \n  .btn {\n    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\n    transition: background-color 0.3s, transform 0.3s;\n  }\n  \n  .btn:hover {\n    background-color: #0056b3; /* Colore del pulsante quando si passa il mouse */\n    transform: scale(1.1); /* Effetto di ingrandimento quando si passa il mouse */\n  }\n\n.notes-grid{\n  display: grid;\n  grid-template-columns: repeat(\n    auto-fill,\n    minmax(250px , auto),\n  );\n  grid-auto-rows: minmax(250px , auto);\n  gap: 20px;\n}\n\n.note-item{\n  display: flex;\n  flex-direction: column;\n  border: 1px solid #ccc;\n  padding: 10px;\n  border-radius: 5px;\n  background-color: #f9f9f9;\n  cursor: pointer; \n}\n\n.notes-header{\n  display: flex;\n  justify-content: flex-end;\n}\n\n.notes-header button{\n  font-size: 16px;\n  background:transparent;\n  border:none;\n  cursor:pointer;\n  max-width: fit-content;\n}\n\nh2{\n  margin: 0;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

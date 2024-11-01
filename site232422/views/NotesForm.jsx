@@ -79,7 +79,7 @@ function NotesForm() {
                     </div>
 
                     <div className="mb-3">
-                        <label htmlFor="prio" className="form-label">inserire qui da 1 a 10 quanto è importante per te</label>
+                        <label htmlFor="prio" className="form-label">inserire qui quanto è importante per te</label>
                         <input
                             type="number"
                             className="form-control"

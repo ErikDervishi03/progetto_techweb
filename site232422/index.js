@@ -132,6 +132,22 @@ app.post('/api/newnote', async (req,res) => {
     }
 })
 
+app.delete('/api/notes/:id', async (req, res) => {
+    try {
+        const noteId = req.params.id;
+        const deletedNote = await Note.findByIdAndDelete(noteId);
+        
+        if (!deletedNote) {
+            return res.status(404).json({ success: false, message: "Nota non trovata." });
+        }
+        
+        res.status(200).json({ success: true, message: "Nota eliminata con successo." });
+    } catch (err) {
+        console.error("Errore durante l'eliminazione della nota:", err);
+        res.status(500).json({ success: false, message: "Errore del server durante l'eliminazione della nota." });
+    }
+});
+
 
 //ascolta sulla porta default 3000
 app.listen(3000)
